@@ -1,0 +1,25 @@
+{
+    "name": "superfish",
+    "title": "jQuery Superfish Menu Plugin",
+    "description": "Superfish is a jQuery plugin that adds usability enhancements to existing multi-level drop-down menus.",
+    "keywords": [
+        "menu",
+        "dropdown"
+    ],
+    "version": "1.5.0",
+    "author": {
+        "name": "Joel Birch"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/jquery/jquery-color/blob/2.1.2/MIT-LICENSE.txt"
+        }
+    ],
+    "bugs": "https://github.com/joeldbirch/superfish/issues",
+    "homepage": "http://users.tpg.com.au/j_birch/plugins/superfish/",
+    "docs": "http://users.tpg.com.au/j_birch/plugins/superfish/",
+    "dependencies": {
+        "jquery": ">=1.2"
+    }
+}
