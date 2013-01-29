@@ -1,0 +1,1 @@
+Please use the [existing Superfish documentation](http://users.tpg.com.au/j_birch/plugins/superfish/).
