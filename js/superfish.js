@@ -1,13 +1,12 @@
 
 /*
- * Superfish v1.5.0 - jQuery menu widget
+ * Superfish v1.5.1 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
  * 	http://www.opensource.org/licenses/mit-license.php
  * 	http://www.gnu.org/licenses/gpl.html
  *
- * CHANGELOG: http://users.tpg.com.au/j_birch/plugins/superfish/changelog.txt
  */
 
 ;(function($){
@@ -16,7 +15,7 @@
 		var sf = $.fn.superfish,
 			c = sf.c,
 			$arrow = $('<span class="'+c.arrowClass+'"> &#187;</span>'),
-			over = function(){
+			over = function(e){
 				var $$ = $(this), menu = getMenu($$);
 				clearTimeout(menu.sfTimer);
 				$$.showSuperfishUl().siblings().hideSuperfishUl();
@@ -33,23 +32,40 @@
 					}
 				},o.delay);	
 			},
-			getMenu = function($menu){
-				var menu = $menu.parents('ul.'+c.menuClass+':first')[0];
+			getMenu = function($child){
+				if ($child.hasClass(c.menuClass)){
+					$.error('Superfish requires you to update to a version of hoverIntent that supports event-delegation, such as this one: https://github.com/joeldbirch/onHoverIntent');
+				}
+				var menu = $child.closest('.'+c.menuClass)[0];
 				sf.op = sf.o[menu.serial];
 				return menu;
+			},
+			applyHandlers = function($menu){
+				var targets = 'li:has(ul)';
+				if ($.fn.hoverIntent && !sf.op.disableHI){
+					$menu.hoverIntent(over, out, targets);
+				} else {
+					$menu.on('mouseenter', targets, over);
+					$menu.on('mouseleave', targets, out);
+				}
+				$menu.on('focusin', targets, over);
+				$menu.on('focusout', targets, out);
 			},
 			addArrow = function($a){ $a.addClass(c.anchorClass).append($arrow.clone()); };
 			
 		return this.addClass(c.menuClass).each(function() {
 			var s = this.serial = sf.o.length;
 			var o = $.extend({},sf.defaults,op);
-			o.$path = $('li.'+o.pathClass,this).slice(0,o.pathLevels).each(function(){
+			var $$ = $(this);
+			o.$path = $$.find('li.'+o.pathClass).slice(0,o.pathLevels).each(function(){
 				$(this).addClass(o.hoverClass+' '+c.bcClass)
 					.filter('li:has(ul)').removeClass(o.pathClass);
 			});
 			sf.o[s] = sf.op = o;
 			
-			$('li:has(ul)',this)[($.fn.hoverIntent && !o.disableHI) ? 'hoverIntent' : 'hover'](over,out).each(function() {
+			applyHandlers($$);
+			
+			$$.find('li:has(ul)').each(function() {
 				if (o.autoArrows) {
 					addArrow( $('>a:first-child',this) );
 				}
@@ -57,11 +73,6 @@
 			.not('.'+c.bcClass)
 				.hideSuperfishUl();
 			
-			var $a = $('a',this);
-			$a.each(function(i){
-				var $li = $a.eq(i).parents('li');
-				$a.eq(i).focus(function(){over.call($li);}).blur(function(){out.call($li);});
-			});
 			o.onInit.call(this);
 			
 		});

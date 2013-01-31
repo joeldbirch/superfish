@@ -6,7 +6,7 @@
         "menu",
         "dropdown"
     ],
-    "version": "1.5.0",
+    "version": "1.5.1",
     "author": {
         "name": "Joel Birch"
     },
@@ -20,6 +20,6 @@
     "homepage": "http://users.tpg.com.au/j_birch/plugins/superfish/",
     "docs": "http://users.tpg.com.au/j_birch/plugins/superfish/",
     "dependencies": {
-        "jquery": ">=1.2"
+        "jquery": ">=1.7"
     }
 }
