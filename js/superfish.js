@@ -51,27 +51,30 @@
 				$menu.on('focusin', targets, over);
 				$menu.on('focusout', targets, out);
 			},
+			addArrows = function($li,o){
+				if (o.autoArrows) {
+					$li.children('a').each(function() {
+						addArrow( $(this) );
+					});
+				}
+			},
 			addArrow = function($a){ $a.addClass(c.anchorClass).append($arrow.clone()); };
 			
 		return this.addClass(c.menuClass).each(function() {
 			var s = this.serial = sf.o.length;
 			var o = $.extend({},sf.defaults,op);
 			var $$ = $(this);
+			var $liHasUl = $$.find('li:has(ul)');
 			o.$path = $$.find('li.'+o.pathClass).slice(0,o.pathLevels).each(function(){
 				$(this).addClass(o.hoverClass+' '+c.bcClass)
 					.filter('li:has(ul)').removeClass(o.pathClass);
 			});
 			sf.o[s] = sf.op = o;
 			
+			addArrows($liHasUl,o);
 			applyHandlers($$);
-			
-			$$.find('li:has(ul)').each(function() {
-				if (o.autoArrows) {
-					addArrow( $('>a:first-child',this) );
-				}
-			})
-			.not('.'+c.bcClass)
-				.hideSuperfishUl();
+
+			$liHasUl.not('.'+c.bcClass).hideSuperfishUl();
 			
 			o.onInit.call(this);
 			
