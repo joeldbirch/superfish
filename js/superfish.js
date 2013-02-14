@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.5.2 - jQuery menu widget
+ * Superfish v1.5.3 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -16,7 +16,6 @@
 			c = sf.c,
 			$arrow = $('<span class="'+c.arrowClass+'"> &#187;</span>'),
 			over = function(e){
-				e.stopPropagation();
 				var $$ = $(this), menu = getMenu($$);
 				if (e.type === 'mouseenter' || e.type==='focusin'){
 					$$.children('a').data('follow',true);
