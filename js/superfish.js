@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.5.3 - jQuery menu widget
+ * Superfish v1.5.4 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -17,9 +17,6 @@
 			$arrow = $('<span class="'+c.arrowClass+'"> &#187;</span>'),
 			over = function(e){
 				var $$ = $(this), menu = getMenu($$);
-				if (e.type === 'mouseenter' || e.type==='focusin'){
-					$$.children('a').data('follow',true);
-				}
 				clearTimeout(menu.sfTimer);
 				$$.showSuperfishUl().siblings().hideSuperfishUl();
 			},
@@ -38,9 +35,6 @@
 				} else {
 					clearTimeout(menu.sfTimer);
 					menu.sfTimer=setTimeout(close,o.delay);
-				}
-				if (e.type === 'mouseleave' || e.type === 'focusout'){
-					$$.children('a').data('follow',false);
 				}
 			},
 			getMenu = function($child){
@@ -72,10 +66,10 @@
 
 				if ( $submenu.length && (sf.op.useClick || !follow) ){
 					e.preventDefault();
-					if ($submenu.is(':visible')){
-						$.proxy(out,$(this).parent(),e)();
-					} else {
+					if (!$submenu.is(':visible')){
 						$.proxy(over,$(this).parent(),e)();
+					} else if (sf.op.useClick && follow) {
+						$.proxy(out,$(this).parent(),e)();
 					}
 				}
 			},
@@ -140,6 +134,7 @@
 	$.fn.extend({
 		hideSuperfishUl : function(){
 			var o = sf.op,
+				$$ = this,
 				not = (o.retainPath===true) ? o.$path : '';
 			o.retainPath = false;
 			var $ul = $('li.'+o.hoverClass,this).add(this).not(not)
@@ -147,16 +142,19 @@
 						$ul = $(this);
 						$ul.css('visibility','hidden').parent().removeClass(o.hoverClass);
 						o.onHide.call($ul);
+						$$.children('a').data('follow', false);
 					});
 			return this;
 		},
 		showSuperfishUl : function(){
 			var o = sf.op,
+				$$ = this,
 				$ul = this.addClass(o.hoverClass)
 					.find('>ul:hidden').css('visibility','visible');
 			o.onBeforeShow.call($ul);
 			$ul.stop().animate(o.animation,o.speed,function(){
 				o.onShow.call($ul);
+				$$.children('a').data('follow', true);
 			});
 			return this;
 		}
