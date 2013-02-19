@@ -71,7 +71,7 @@
 			clickHandler = function(e){
 				var $a = $(this),
 						$submenu = $a.next('ul'),
-						follow = $a.data('follow');
+						follow = ($a.data('follow') === false) ? false : true;
 
 				if ( $submenu.length && (sf.op.useClick || !follow) ){
 					e.preventDefault();
