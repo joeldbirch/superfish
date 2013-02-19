@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.5.4 - jQuery menu widget
+ * Superfish v1.5.5 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -51,25 +51,34 @@
 					if ($.fn.hoverIntent && !sf.op.disableHI){
 						$menu.hoverIntent(over, out, targets);
 					} else {
-						$menu.on('mouseenter', targets, over);
-						$menu.on('mouseleave', targets, out);
+						$menu
+							.on('mouseenter', targets, over)
+							.on('mouseleave', targets, out);
 					}
 				}
-				$menu.on('focusin', targets, over);
-				$menu.on('focusout', targets, out);
-				$menu.on('click', 'a', clickHandler);
+				$menu
+					.on('focusin', targets, over)
+					.on('focusout', targets, out)
+					.on('click', 'a', clickHandler)
+					.on('touchstart', 'a', touchHandler);
+			},
+			touchHandler = function(){
+				var $$ = $(this);
+				if (!$$.next('ul').is(':visible')){
+					$(this).data('follow', false);
+				}
 			},
 			clickHandler = function(e){
-				var $a = $(this);
-				var $submenu = $a.next('ul');
-				var follow = $a.data('follow');
+				var $a = $(this),
+						$submenu = $a.next('ul'),
+						follow = $a.data('follow');
 
 				if ( $submenu.length && (sf.op.useClick || !follow) ){
 					e.preventDefault();
 					if (!$submenu.is(':visible')){
-						$.proxy(over,$(this).parent(),e)();
+						$.proxy(over,$a.parent(),e)();
 					} else if (sf.op.useClick && follow) {
-						$.proxy(out,$(this).parent(),e)();
+						$.proxy(out,$a.parent(),e)();
 					}
 				}
 			},
