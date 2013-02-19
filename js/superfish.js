@@ -151,7 +151,6 @@
 						$ul = $(this);
 						$ul.css('visibility','hidden').parent().removeClass(o.hoverClass);
 						o.onHide.call($ul);
-						$$.children('a').data('follow', false);
 					});
 			return this;
 		},
