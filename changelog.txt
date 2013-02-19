@@ -86,3 +86,5 @@ v1.5.3 		14 Feb 2013. Bug fix. IE was throwing errors.
 v1.5.4 		17 Feb 2013. New feature: Links with submenus only followable when their submenu is open, allows support to be extended to ALL browsers on ALL touch devices. Fixes IE bug with 'useClick' feature.
 
 v1.5.5 		20 Feb 2013. Moved flag that temporarily prevents link-follows to touchstart so link clicks via mouse are not delayed. This restores usual submenu behaviour with mouse interaction while retaining full touch device support.
+
+v1.5.6		20 Feb 2013. Bug fix for removing link-clickable delay with mouse interaction.
