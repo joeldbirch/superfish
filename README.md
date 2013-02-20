@@ -17,3 +17,4 @@ Please use the [existing Superfish documentation](http://users.tpg.com.au/j_birc
 - Full support for touch devices. Great for mobile-first web design. Add some CSS media queries and use the same menu code-base at all screen sizes.
 - Submenu closing animations. Customisable separately to opening animations.
 - Optionally `useClick` instead of mouse hovers to open and close menus. This is separate to the touch support, which always requires a tap to open submenus.
+- Uses event delegation for improved initialisation performance.

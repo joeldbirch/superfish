@@ -90,3 +90,5 @@ v1.5.5 		20 Feb 2013. Moved flag that temporarily prevents link-follows to touch
 v1.5.6		20 Feb 2013. Bug fix for removing link-clickable delay with mouse interaction.
 
 v1.5.7		20 Feb 2013. Bug fix for previous bug fix.
+
+v1.5.8 		20 Feb 2013. IE animation bug (https://github.com/joeldbirch/superfish/issues/7) fixed by removing the visibility toggle once again (see v1.4.7 change). jQuery now handles this well. Fix 'useClick' IE bug introduced in last release.
