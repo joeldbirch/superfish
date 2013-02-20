@@ -149,7 +149,7 @@
 			var $ul = $('li.'+o.hoverClass,this).add(this).not(not)
 					.find('>ul').stop().animate(o.animationOut,o.speedOut,function(){
 						$ul = $(this);
-						$ul.css('visibility','hidden').parent().removeClass(o.hoverClass);
+						$ul.parent().removeClass(o.hoverClass);
 						o.onHide.call($ul);
 					});
 			return this;
@@ -158,7 +158,7 @@
 			var o = sf.op,
 				$$ = this,
 				$ul = this.addClass(o.hoverClass)
-					.find('>ul:hidden').css('visibility','visible');
+					.find('>ul:hidden');
 			o.onBeforeShow.call($ul);
 			$ul.stop().animate(o.animation,o.speed,function(){
 				o.onShow.call($ul);
