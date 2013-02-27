@@ -92,3 +92,5 @@ v1.5.6		20 Feb 2013. Bug fix for removing link-clickable delay with mouse intera
 v1.5.7		20 Feb 2013. Bug fix for previous bug fix.
 
 v1.5.8 		20 Feb 2013. IE animation bug (https://github.com/joeldbirch/superfish/issues/7) fixed by removing the visibility toggle once again (see v1.4.7 change). jQuery now handles this well. Fix 'useClick' IE bug introduced in last release.
+
+v1.5.9 		27 Feb 2013. Bug fix for keyboard behaviour. Focussed menu items that do not have their own associated submenus now close siblings' submenus, as they should.

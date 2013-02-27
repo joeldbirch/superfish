@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.5.8 - jQuery menu widget
+ * Superfish v1.5.9 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -57,8 +57,8 @@
 					}
 				}
 				$menu
-					.on('focusin', targets, over)
-					.on('focusout', targets, out)
+					.on('focusin', 'li', over)
+					.on('focusout', 'li', out)
 					.on('click', 'a', clickHandler)
 					.on('touchstart', 'a', touchHandler);
 			},
@@ -160,8 +160,8 @@
 		showSuperfishUl : function(){
 			var o = sf.op,
 				$$ = this,
-				$ul = this.addClass(o.hoverClass)
-					.find('>ul:hidden');
+				$ul = this.find('>ul:hidden');
+				$ul.parent('li').addClass(o.hoverClass);
 			o.onBeforeShow.call($ul);
 			$ul.stop().animate(o.animation,o.speed,function(){
 				o.onShow.call($ul);
