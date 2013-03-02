@@ -64,13 +64,20 @@
 					.on('focusin', 'li', over)
 					.on('focusout', 'li', out)
 					.on('click', 'a', clickHandler)
-					.on('touchstart', 'a', touchHandler);
+					.on('touchstart', 'a', touchHandler)
+					.on('MSPointerUp', 'a', upHandler);
 			},
 			touchHandler = function(e){
 				var $$ = $(this),
 					$ul = $$.siblings('ul');
 				if ($ul.length > 0 && !$ul.is(':visible')){
 					$$.data('follow', false);
+				}
+			},
+			upHandler = function () {
+				$(this).trigger('click');
+				if (!sf.op.useClick){
+					window.location.href = this.href;
 				}
 			},
 			clickHandler = function(e){
