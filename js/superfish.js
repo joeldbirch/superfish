@@ -82,15 +82,15 @@
 			},
 			clickHandler = function(e){
 				var $a = $(this),
-						$submenu = $a.next('ul'),
+						$submenu = $a.siblings('ul'),
 						follow = ($a.data('follow') === false) ? false : true;
 
 				if ( $submenu.length && (sf.op.useClick || !follow) ){
 					e.preventDefault();
 					if (!$submenu.is(':visible')){
-						$.proxy(over,$a.parent(),e)();
+						$.proxy(over,$a.parent('li'),e)();
 					} else if (sf.op.useClick && follow) {
-						$.proxy(out,$a.parent(),e)();
+						$.proxy(out,$a.parent('li'),e)();
 					}
 				}
 			},
