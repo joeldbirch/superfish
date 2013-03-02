@@ -45,6 +45,10 @@
 				sf.op = sf.o[menu.serial];
 				return menu;
 			},
+			applyTouchAction = function($menu){
+				//make touch behave like mouse events on Windows 8
+				$menu.css('ms-touch-action','none');
+			},
 			applyHandlers = function($menu){
 				var targets = 'li:has(ul)';
 				if (!sf.op.useClick){
@@ -103,6 +107,7 @@
 			sf.o[s] = sf.op = o;
 			
 			addArrows($liHasUl,o);
+			applyTouchAction($$);
 			applyHandlers($$);
 
 			$liHasUl.not('.'+c.bcClass).hideSuperfishUl();
