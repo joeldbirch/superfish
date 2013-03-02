@@ -66,10 +66,11 @@
 					.on('click', 'a', clickHandler)
 					.on('touchstart', 'a', touchHandler);
 			},
-			touchHandler = function(){
-				var $$ = $(this);
-				if (!$$.next('ul').is(':visible')){
-					$(this).data('follow', false);
+			touchHandler = function(e){
+				var $$ = $(this),
+					$ul = $$.siblings('ul');
+				if ($ul.length > 0 && !$ul.is(':visible')){
+					$$.data('follow', false);
 				}
 			},
 			clickHandler = function(e){
