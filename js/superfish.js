@@ -15,13 +15,14 @@
 		var sf = $.fn.superfish,
 			c = sf.c,
 			$arrow = $('<span class="'+c.arrowClass+'"> &#187;</span>'),
-			over = function(e){
+			over = function(){
 				var $$ = $(this), menu = getMenu($$);
 				clearTimeout(menu.sfTimer);
 				$$.showSuperfishUl().siblings().hideSuperfishUl();
 			},
 			out = function(e){
 				var $$ = $(this), menu = getMenu($$), o = sf.op;
+
 				var close = function(){
 					o.retainPath=($.inArray($$[0],o.$path)>-1);
 					$$.hideSuperfishUl();
@@ -88,7 +89,7 @@
 				if ( $submenu.length && (sf.op.useClick || !follow) ){
 					e.preventDefault();
 					if (!$submenu.is(':visible')){
-						$.proxy(over,$a.parent('li'),e)();
+						$.proxy(over,$a.parent('li'))();
 					} else if (sf.op.useClick && follow) {
 						$.proxy(out,$a.parent('li'),e)();
 					}
