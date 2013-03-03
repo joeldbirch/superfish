@@ -47,7 +47,7 @@
 				return menu;
 			},
 			applyTouchAction = function($menu){
-				//make touch behave like mouse events on Windows 8
+       //needed by MS pointer events
 				$menu.css('ms-touch-action','none');
 			},
 			applyHandlers = function($menu){
