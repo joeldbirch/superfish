@@ -61,24 +61,22 @@
 							.on('mouseleave', targets, out);
 					}
 				}
+				var touchstart = 'MSPointerDown';
+				//Sorry, but avoiding weird glitches with touchstart. iOS doesn't need it, anyway.
+				if ( !navigator.userAgent.match(/iPhone/i) && !navigator.userAgent.match(/iPad/i) ){
+					touchstart += ' touchstart';
+				}
 				$menu
 					.on('focusin', 'li', over)
 					.on('focusout', 'li', out)
 					.on('click', 'a', clickHandler)
-					.on('touchstart', 'a', touchHandler)
-					.on('MSPointerUp', 'a', upHandler);
+					.on(touchstart, 'a', touchHandler);
 			},
 			touchHandler = function(e){
 				var $$ = $(this),
 					$ul = $$.siblings('ul');
 				if ($ul.length > 0 && !$ul.is(':visible')){
 					$$.data('follow', false);
-				}
-			},
-			upHandler = function () {
-				$(this).trigger('click');
-				if (!sf.op.useClick){
-					window.location.href = this.href;
 				}
 			},
 			clickHandler = function(e){
