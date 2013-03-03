@@ -31,7 +31,7 @@
 						$.proxy(over,o.$path,e)();
 					}
 				};
-				if (e.type !== 'mouseleave' && e.type !== 'focusout'){
+				if (e.type === 'click'){
 					close();
 				} else {
 					clearTimeout(menu.sfTimer);
