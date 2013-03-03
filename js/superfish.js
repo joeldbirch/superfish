@@ -73,12 +73,16 @@
 					.on(touchstart, 'a', touchHandler);
 			},
 			touchHandler = function(e){
-				var $$ = $(this),
-					$ul = $$.siblings('ul');
-				if ($ul.length > 0 && !$ul.is(':visible')){
-					$$.data('follow', false);
-				}
-			},
+        var $$ = $(this),
+          $ul = $$.siblings('ul');
+        if ($ul.length > 0 && !$ul.is(':visible')){
+          $$.data('follow', false);
+          if (e.type === 'MSPointerDown'){
+						$$.trigger('focus');
+						return false;
+					}
+        }
+      },
 			clickHandler = function(e){
 				var $a = $(this),
 						$submenu = $a.siblings('ul'),
