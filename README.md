@@ -14,8 +14,7 @@ Please use the [existing Superfish documentation](http://users.tpg.com.au/j_birc
 
 ## Recently added features
 
-- Full support for touch devices. Great for mobile-first web design. Add some CSS media queries and use the same menu code-base at all screen sizes.
-- As of Superfish v1.5.10, Windows 8 touch devices use Microsoft's new Pointer Events. Touch and swipe around to navigate, then lift-off a link to activate it. Mouse events and keyboard access work as normal.
+- Full support for touch devices. Touch to open submenus, touch again to follow the link. A simple solution for responsive web design: add some CSS media queries and use the same menu code-base at all screen sizes.
+- IE10 has touch behaviour consistent with all other touch-enabled browsers despite its new pointer events system. Mouse events and keyboard access all work as per normal.
 - Submenu closing animations. Customisable separately to opening animations.
-- Optionally `useClick` instead of mouse hovers to open and close menus. This is separate to the touch support, which always requires a tap to open submenus.
 - Uses event delegation for improved initialisation performance.

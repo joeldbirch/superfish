@@ -96,3 +96,5 @@ v1.5.8 		20 Feb 2013. IE animation bug (https://github.com/joeldbirch/superfish/
 v1.5.9 		27 Feb 2013. Bug fix for keyboard behaviour. Focussed menu items that do not have their own associated submenus now close siblings' submenus, as they should.
 
 v1.5.10 	2 Mar 2013. Support IE10 on touch devices. Behaves differently to other touch devices as MS Pointer Events want touch events to be similar to mouse events. Touch, hold and swipe around to navigate, then lift off a link to follow it.
+
+v1.5.11 	4 Mar 2013. Recode IE10 touch support to behave like other touch browsers rather than holding finger down and moving around. Now tap to open submenus which will stay open until menu is unfocussed. A subsequent tap on a link with an open submenu will follow the link. Only other webkit browsers need touchstart – Apple has its own unique hover fix and touchstart caused it weird highlight bugs. Other very minor code changes.
