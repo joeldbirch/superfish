@@ -121,7 +121,7 @@
 			applyTouchAction($$);
 			applyHandlers($$);
 
-			$liHasUl.not('.'+c.bcClass).hideSuperfishUl();
+			$liHasUl.not('.'+c.bcClass).children('ul').show().hide();
 			
 			o.onInit.call(this);
 			
