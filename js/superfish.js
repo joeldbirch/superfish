@@ -133,31 +133,31 @@
 	sf.op = {};
 
 	sf.c = {
-		bcClass     : 'sf-breadcrumb',
-		menuClass   : 'sf-js-enabled',
-		anchorClass : 'sf-with-ul',
-		arrowClass  : 'sf-sub-indicator'
+		bcClass: 'sf-breadcrumb',
+		menuClass: 'sf-js-enabled',
+		anchorClass: 'sf-with-ul',
+		arrowClass: 'sf-sub-indicator'
 	};
 	sf.defaults = {
-		hoverClass	: 'sfHover',
-		pathClass	: 'overideThisToUse',
-		pathLevels	: 1,
-		delay		: 800,
-		animation	: {opacity:'show'},
+		hoverClass: 'sfHover',
+		pathClass: 'overideThisToUse',
+		pathLevels: 1,
+		delay: 800,
+		animation: {opacity:'show'},
 		animationOut: {opacity:'hide'},
-		speed		: 'normal',
-		speedOut : 'fast',
-		autoArrows	: true,
-		disableHI	: false,		// true disables hoverIntent detection
-		useClick : false,
-		onInit		: function(){}, // callback functions
+		speed: 'normal',
+		speedOut: 'fast',
+		autoArrows: true,
+		disableHI: false,		// true disables hoverIntent detection
+		useClick: false,
+		onInit: function(){}, // callback functions
 		onBeforeShow: function(){},
-		onShow		: function(){},
-		onHide		: function(){},
-		onIdle		: function(){}
+		onShow: function(){},
+		onHide: function(){},
+		onIdle: function(){}
 	};
 	$.fn.extend({
-		hideSuperfishUl : function(){
+		hideSuperfishUl: function(){
 			var o = sf.op,
 				$$ = this,
 				not = (o.retainPath===true) ? o.$path : '';
@@ -172,7 +172,7 @@
 				});
 			return this;
 		},
-		showSuperfishUl : function(){
+		showSuperfishUl: function(){
 			var o = sf.op,
 				$$ = this,
 				$ul = this.children('ul:hidden');
