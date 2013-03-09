@@ -164,7 +164,7 @@
 			o.retainPath = false;
 			$('li.'+o.hoverClass,this).add(this).not(not)
 				.removeClass(o.hoverClass)
-				.find('>ul').stop().animate(o.animationOut,o.speedOut,function(){
+				.children('ul').stop().animate(o.animationOut,o.speedOut,function(){
 					o.onHide.call($(this));
 					if (sf.op.useClick){
 						$$.children('a').data('follow', false);
@@ -175,7 +175,7 @@
 		showSuperfishUl : function(){
 			var o = sf.op,
 				$$ = this,
-				$ul = this.find('>ul:hidden');
+				$ul = this.children('ul:hidden');
 				$ul.parent('li').addClass(o.hoverClass);
 			o.onBeforeShow.call($ul);
 			$ul.stop().animate(o.animation,o.speed,function(){
