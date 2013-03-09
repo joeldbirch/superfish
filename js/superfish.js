@@ -165,8 +165,7 @@
 			$('li.'+o.hoverClass,this).add(this).not(not)
 				.removeClass(o.hoverClass)
 				.find('>ul').stop().animate(o.animationOut,o.speedOut,function(){
-					$ul = $(this);
-					o.onHide.call($ul);
+					o.onHide.call($(this));
 					if (sf.op.useClick){
 						$$.children('a').data('follow', false);
 					}
