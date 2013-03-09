@@ -162,7 +162,7 @@
 				$$ = this,
 				not = (o.retainPath===true) ? o.$path : '';
 			o.retainPath = false;
-			var $ul = $('li.'+o.hoverClass,this).add(this).not(not)
+			$('li.'+o.hoverClass,this).add(this).not(not)
 				.removeClass(o.hoverClass)
 				.find('>ul').stop().animate(o.animationOut,o.speedOut,function(){
 					$ul = $(this);
