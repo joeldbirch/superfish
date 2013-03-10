@@ -154,6 +154,7 @@
 		onBeforeShow: function(){},
 		onShow		: function(){},
 		onHide		: function(){},
+		onBeforeHide: function(){},
 		onIdle		: function(){}
 	};
 	$.fn.extend({
@@ -163,7 +164,9 @@
 				not = (o.retainPath===true) ? o.$path : '';
 			o.retainPath = false;
 			var $ul = $('li.'+o.hoverClass,this).add(this).not(not)
-					.find('>ul').stop().animate(o.animationOut,o.speedOut,function(){
+					.find('>ul');
+			o.onBeforeHide.call($ul);
+			$ul.stop().animate(o.animationOut,o.speedOut,function(){
 						$ul = $(this);
 						$ul.parent().removeClass(o.hoverClass);
 						o.onHide.call($ul);
