@@ -63,7 +63,7 @@
 				}
 				var touchstart = 'MSPointerDown';
 				//Sorry, but avoiding weird glitches with touchstart. iOS doesn't need it, anyway.
-				if ( !navigator.userAgent.match(/iPhone/i) && !navigator.userAgent.match(/iPad/i) ){
+				if ( !navigator.userAgent.toLowerCase().match(/(iphone|ipod|ipad)/) ){
 					touchstart += ' touchstart';
 				}
 				$menu
