@@ -1,11 +1,14 @@
 /* adding sf-vertical class in addition to sf-menu creates a vertical menu */
 /* eg. <ul class="sf-menu sf-vertical"> ... */
-.sf-vertical, .sf-vertical li {
+.sf-vertical {
 	width:	10em;
 }
 .sf-vertical ul {
 	left:	100%;
 	top:	0;
+}
+.sf-vertical li {
+  width: 100%;
 }
 
 /*** alter arrow directions ***/

@@ -23,9 +23,6 @@
 	background: #AABDE6;
 	position: static;
 }
-.sf-navbar a {
-	*zoom: 1; /* IE7 */
-}
 .sf-navbar > li > a,
 .sf-navbar > li > ul > li > a {
 	border: none;

@@ -49,6 +49,7 @@
 	border-top: 1px solid rgba(255,255,255,.5);
 	padding: .75em 1em;
 	text-decoration:none;
+	zoom: 1; /* IE7 */
 }
 .sf-menu a {
 	color: #13a;
