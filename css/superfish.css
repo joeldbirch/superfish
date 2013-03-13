@@ -45,7 +45,8 @@
 }
 .sf-menu a {
 	border-left: 1px solid #fff;
-	border-top: 1px solid #CFDEFF;
+	border-top: 1px solid #dFeEFF; /* fallback colour must use full shorthand */
+	border-top: 1px solid rgba(255,255,255,.5);
 	padding: .75em 1em;
 	text-decoration:none;
 }
@@ -82,7 +83,7 @@
 	position: absolute;
 	display: block;
 	right: .75em;
-	top: .8em;
+	top: .9em;
 	width: 10px;
 	height: 10px;
 	text-indent: -999em;
