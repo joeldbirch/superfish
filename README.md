@@ -8,7 +8,7 @@ Please use the [existing Superfish documentation](http://users.tpg.com.au/j_birc
 
 ## Download
 
-**Important note:** As of Superfish v1.5.1 if you wish to enhance your menu with Brian Cherne's hoverIntent plugin (highly recommended) you will need to use a [patched version that supports event delegation](https://github.com/joeldbirch/onHoverIntent).
+**Important note:** As of Superfish v1.5.1 if you wish to enhance your menu with Brian Cherne's hoverIntent plugin (highly recommended) you will need to use [the latest version (r7) which now supports event delegation](https://github.com/briancherne/jquery-hoverIntent). Also, if you notice your dropdowns not working when WordPress's admin bar is showing, see [Issue 14](https://github.com/joeldbirch/superfish/issues/14) for fixes to tide you over until WordPress updates its version of hoverIntent (see [this Trac ticket](http://core.trac.wordpress.org/ticket/23752)).
 
 ### Download [Superfish zip archive](https://github.com/joeldbirch/superfish/archive/master.zip)
 
