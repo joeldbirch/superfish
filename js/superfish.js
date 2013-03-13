@@ -175,9 +175,9 @@
 		showSuperfishUl: function(){
 			var o = sf.op,
 				$$ = this.addClass(o.hoverClass),
-				$ul = this.children('ul:hidden');
+				$ul = this.children('ul');
 			o.onBeforeShow.call($ul);
-			$ul.stop().animate(o.animation,o.speed,function(){
+			$ul.animate(o.animation,o.speed,function(){
 				o.onShow.call($ul);
 				$$.children('a').data('follow', true);
 			});
