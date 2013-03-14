@@ -164,7 +164,7 @@
 			o.retainPath = false;
 			$('li.'+o.hoverClass,this).add(this).not(not)
 				.removeClass(o.hoverClass)
-				.children('ul').stop().animate(o.animationOut,o.speedOut,function(){
+				.children('ul').stop(true,true).animate(o.animationOut,o.speedOut,function(){
 					o.onHide.call($(this));
 					if (sf.op.useClick){
 						$$.children('a').data('follow', false);
@@ -177,7 +177,7 @@
 				$$ = this.addClass(o.hoverClass),
 				$ul = this.children('ul');
 			o.onBeforeShow.call($ul);
-			$ul.animate(o.animation,o.speed,function(){
+			$ul.stop(true,true).animate(o.animation,o.speed,function(){
 				o.onShow.call($ul);
 				$$.children('a').data('follow', true);
 			});
