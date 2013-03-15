@@ -183,6 +183,17 @@
 				o.onShow.call($ul);
 				$$.children('a').data('follow', true);
 			});
+			var ww = $(window).width();
+            var subUL = this.children("ul").first();
+            var locUL = subUL.offset().left + subUL.width();
+            if (locUL > ww) {
+                var par = subUL.parent().parent();
+                if (par.hasClass("sf-menu")) {
+                    subUL.css("left", "-" + (locUL - ww) + "px");
+                } else {
+                    subUL.css("left", "-" + (subUL.width()) + "px");
+                }
+            }
 			return this;
 		}
 	});
