@@ -10,7 +10,7 @@ Please use the [existing Superfish documentation](http://users.tpg.com.au/j_birc
 
 ###Important notes before you download:
 - For your existing Superfish menus, you may prefer to stick with v1.5.11 unless you are prepared to alter your CSS to hide submenus using display:none rather than off-canvas (eg. top:-999em), otherwise you may lose closing animations (the submenus will be off-canvas while the animation happens).
-- As of Superfish v1.5.1 if you wish to enhance your menu with Brian Cherne's hoverIntent plugin (highly recommended) you will need to use a [patched version that supports event delegation](https://github.com/joeldbirch/onHoverIntent).
+- As of Superfish v1.5.1 if you wish to enhance your menu with Brian Cherne's hoverIntent plugin (highly recommended) you will need to use [the latest version (r7) which now supports event delegation](https://github.com/briancherne/jquery-hoverIntent).
 - Follow this link if you need an [easy solution to address a hoverIntent conflict with WordPress](https://github.com/joeldbirch/superfish/issues/14#issuecomment-14554500).
 
 ### Download [Superfish zip archive](https://github.com/joeldbirch/superfish/archive/master.zip)
