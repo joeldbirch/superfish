@@ -100,3 +100,5 @@ v1.5.10 	2 Mar 2013. Support IE10 on touch devices. Behaves differently to other
 v1.5.11 	4 Mar 2013. Recode IE10 touch support to behave like other touch browsers rather than holding finger down and moving around. Now tap to open submenus which will stay open until menu is unfocussed. A subsequent tap on a link with an open submenu will follow the link. Only other webkit browsers need touchstart – Apple has its own unique hover fix and touchstart caused it weird highlight bugs. Other very minor code changes.
 
 v1.5.12 	13 Mar 2013. Bug fix: Alter initialisation code to avoid requiring menus use the "off-left" (or "off-top") method of hiding submenus. Now allows display:none method and resolves this issue: https://github.com/joeldbirch/superfish/issues/17 . Slight refactor of iOS-sniff. Update to official hoverIntent.js file which added event delegation in r7.
+
+v1.5.13 	15 March 2013. Bug fix: height animations were getting stuck - fixed. Minor code optimisations.
