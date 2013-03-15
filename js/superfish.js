@@ -175,7 +175,7 @@
 		showSuperfishUl: function(){
 			var o = sf.op,
 				$$ = this.addClass(o.hoverClass),
-				$ul = this.children('ul');
+				$ul = $$.children('ul');
 			o.onBeforeShow.call($ul);
 			$ul.stop(true,true).animate(o.animation,o.speed,function(){
 				o.onShow.call($ul);
