@@ -75,7 +75,7 @@
 			touchHandler = function(e){
         var $$ = $(this),
           $ul = $$.siblings('ul');
-        if ($ul.length > 0 && !$ul.is(':visible')){
+        if ($ul.length > 0 && $ul.is(':hidden')){
           $$.data('follow', false);
           if (e.type === 'MSPointerDown'){
 						$$.trigger('focus');
@@ -90,7 +90,7 @@
 
 				if ( $submenu.length && (sf.op.useClick || !follow) ){
 					e.preventDefault();
-					if (!$submenu.is(':visible')){
+					if ($submenu.is(':hidden')){
 						$.proxy(over,$a.parent('li'))();
 					} else if (sf.op.useClick && follow) {
 						$.proxy(out,$a.parent('li'),e)();
