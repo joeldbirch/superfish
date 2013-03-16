@@ -31,7 +31,7 @@
 						$.proxy(over,o.$path,e)();
 					}
 				};
-				if (e.type === 'click'){
+				if (e.type === 'click' || sf.ios){
 					close();
 				} else {
 					clearTimeout(menu.sfTimer);
@@ -185,5 +185,10 @@
 			return this;
 		}
 	});
+
+	if ( sf.ios ){
+		//iOS click won't bubble to body, attach to closest possible
+		$(function(){ $('body').children().on('click',$.noop); });
+	}
 
 })(jQuery);
