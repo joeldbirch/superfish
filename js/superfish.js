@@ -149,12 +149,12 @@
 		autoArrows: true,
 		disableHI: false,		// true disables hoverIntent detection
 		useClick: false,
-		onInit: function(){}, // callback functions
-		onBeforeShow: function(){},
-		onShow: function(){},
+		onInit: $.noop, // callback functions
+		onBeforeShow: $.noop,
+		onShow: $.noop,
 		onBeforeHide: $.noop,
-		onHide: function(){},
-		onIdle: function(){}
+		onHide: $.noop,
+		onIdle: $.noop
 	};
 	sf.ios = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 	$.fn.extend({
