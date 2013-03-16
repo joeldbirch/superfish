@@ -62,8 +62,7 @@
 					}
 				}
 				var touchstart = 'MSPointerDown';
-				//Sorry, but avoiding weird glitches with touchstart. iOS doesn't need it, anyway.
-				if ( !navigator.userAgent.match(/iPhone/i) && !navigator.userAgent.match(/iPad/i) ){
+				if ( !sf.ios ){
 					touchstart += ' touchstart';
 				}
 				$menu
@@ -156,6 +155,7 @@
 		onHide: function(){},
 		onIdle: function(){}
 	};
+	sf.ios = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 	$.fn.extend({
 		hideSuperfishUl: function(){
 			var o = sf.op,
