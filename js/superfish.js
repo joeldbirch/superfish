@@ -50,7 +50,7 @@
        //needed by MS pointer events
 				$menu.css('ms-touch-action','none');
 			},
-			applyHandlers = function($menu){
+			applyHandlers = function($menu,o){
 				var targets = 'li:has(ul)';
 				if (!sf.op.useClick){
 					if ($.fn.hoverIntent && !sf.op.disableHI){
@@ -68,7 +68,7 @@
 				$menu
 					.on('focusin', 'li', over)
 					.on('focusout', 'li', out)
-					.on('click', 'a', clickHandler)
+					.on('click', 'a', o, clickHandler)
 					.on(touchstart, 'a', touchHandler);
 			},
 			touchHandler = function(e){
@@ -87,11 +87,11 @@
 						$submenu = $a.siblings('ul'),
 						follow = ($a.data('follow') === false) ? false : true;
 
-				if ( $submenu.length && (sf.op.useClick || !follow) ){
+				if ( $submenu.length && (e.data.useClick || !follow) ){
 					e.preventDefault();
 					if ($submenu.is(':hidden')){
 						$.proxy(over,$a.parent('li'))();
-					} else if (sf.op.useClick && follow) {
+					} else if (e.data.useClick && follow) {
 						$.proxy(out,$a.parent('li'),e)();
 					}
 				}
@@ -118,7 +118,7 @@
 			
 			addArrows($liHasUl,o);
 			applyTouchAction($$);
-			applyHandlers($$);
+			applyHandlers($$,o);
 
 			$liHasUl.not('.'+c.bcClass).children('ul').show().hide();
 			
@@ -166,7 +166,7 @@
 				.removeClass(o.hoverClass)
 				.children('ul').stop(true,true).animate(o.animationOut,o.speedOut,function(){
 					o.onHide.call($(this));
-					if (sf.op.useClick){
+					if (o.useClick){
 						$$.children('a').data('follow', false);
 					}
 				});
