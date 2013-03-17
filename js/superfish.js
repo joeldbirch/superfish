@@ -106,9 +106,9 @@
 			addArrow = function($a){ $a.addClass(c.anchorClass).append($arrow.clone()); };
 			
 		return this.addClass(c.menuClass).each(function() {
+			var $$ = $(this);
 			var s = this.serial = sf.o.length;
 			var o = $.extend({},sf.defaults,op);
-			var $$ = $(this);
 			var $liHasUl = $$.find('li:has(ul)');
 			o.$path = $$.find('li.'+o.pathClass).slice(0,o.pathLevels).each(function(){
 				$(this).addClass(o.hoverClass+' '+c.bcClass)
