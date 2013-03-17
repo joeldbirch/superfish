@@ -98,6 +98,13 @@
 					}
 				}
 			},
+			setPathToCurrent = function($menu,o) {
+				return $menu.find('li.'+o.pathClass).slice(0,o.pathLevels)
+					.addClass(o.hoverClass+' '+c.bcClass)
+						.filter(function(){
+							return ($(this).children('ul').hide().show().length);
+						}).removeClass(o.pathClass);
+			},
 			addArrows = function($li,o){
 				if (o.autoArrows) {
 					$li.children('a').each(function() {
@@ -112,13 +119,9 @@
 		return this.addClass(c.menuClass).each(function() {
 			var $$ = $(this);
 			var	o = $.extend({}, sf.defaults, op);
-			var $liHasUl = $$.find('li:has(ul)');
+			var $liHasUl = $$.find('ul').parent();
 
-			o.$path = $$.find('li.'+o.pathClass).slice(0,o.pathLevels)
-				.each(function(){
-					$(this).addClass(o.hoverClass+' '+c.bcClass)
-						.filter('li:has(ul)').removeClass(o.pathClass);
-				});
+			o.$path = setPathToCurrent($$,o);
 
 			$$.data('sf-options',o);
 			
