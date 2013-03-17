@@ -24,21 +24,21 @@
 				var $$ = $(this),
 					o = getOptions($$);
 
-				var close = function(){
-					o.retainPath=( $.inArray($$[0],o.$path) > -1);
-					$$.hideSuperfishUl();
-					if (!$$.parents('.'+o.hoverClass).length){
-						o.onIdle.call(getMenu($$));
-						if (o.$path.length){
-							$.proxy(over,o.$path,e)();
-						}
-					}
-				};
 				if (e.type === 'click' || sf.ios){
-					close();
+					$.proxy(close,$$,o)();
 				} else {
 					clearTimeout(o.sfTimer);
-					o.sfTimer=setTimeout(close,o.delay);
+					o.sfTimer=setTimeout($.proxy(close,$$,o), o.delay);
+				}
+			},
+			close = function(o){
+				o.retainPath=( $.inArray(this[0],o.$path) > -1);
+				this.hideSuperfishUl();
+				if (!this.parents('.'+o.hoverClass).length){
+					o.onIdle.call(getMenu(this));
+					if (o.$path.length){
+						$.proxy(over,o.$path)();
+					}
 				}
 			},
 			getMenu = function($el){
