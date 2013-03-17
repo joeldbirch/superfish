@@ -25,9 +25,9 @@
 					o = getOptions($$);
 
 				var close = function(){
-					o.retainPath=($.inArray($$[0],o.$path)>-1);
+					o.retainPath=( $.inArray($$[0],o.$path) > -1);
 					$$.hideSuperfishUl();
-					if ($$.parents('.'+o.hoverClass).length < 1){
+					if (!$$.parents('.'+o.hoverClass).length){
 						o.onIdle.call(getMenu($$));
 						if (o.$path.length){
 							$.proxy(over,o.$path,e)();
