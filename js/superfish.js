@@ -148,7 +148,7 @@
 	};
 	sf.defaults = {
 		hoverClass: 'sfHover',
-		pathClass: 'overideThisToUse',
+		pathClass: 'overrideThisToUse',
 		pathLevels: 1,
 		delay: 800,
 		animation: {opacity:'show'},
