@@ -119,7 +119,9 @@
 		return this.addClass(c.menuClass).each(function() {
 			var $$ = $(this);
 			var	o = $.extend({}, sf.defaults, op);
-			var $liHasUl = $$.find('ul').parent();
+			var $liHasUl = $$.find('ul')
+				.not('.'+c.bcClass).show().hide().end()
+				.parent();
 
 			o.$path = setPathToCurrent($$,o);
 
@@ -128,8 +130,6 @@
 			addArrows($liHasUl,o);
 			applyTouchAction($$);
 			applyHandlers($$,o);
-
-			$liHasUl.not('.'+c.bcClass).children('ul').show().hide();
 			
 			o.onInit.call(this);
 			
