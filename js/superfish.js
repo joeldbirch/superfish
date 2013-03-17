@@ -16,35 +16,36 @@
 			c = sf.c,
 			$arrow = $('<span class="'+c.arrowClass+'"> &#187;</span>'),
 			over = function(){
-				var $$ = $(this), menu = getMenu($$);
-				clearTimeout(menu.sfTimer);
+				var $$ = $(this), o = getOptions($$);
+				clearTimeout( o.sfTimer );
 				$$.showSuperfishUl().siblings().hideSuperfishUl();
 			},
 			out = function(e){
-				var $$ = $(this), menu = getMenu($$), o = sf.op;
+				var $$ = $(this),
+					o = getOptions($$);
 
 				var close = function(){
 					o.retainPath=($.inArray($$[0],o.$path)>-1);
 					$$.hideSuperfishUl();
-					if (o.$path.length && $$.parents('li.'+o.hoverClass).length<1){
-						o.onIdle.call();
-						$.proxy(over,o.$path,e)();
+					if ($$.parents('.'+o.hoverClass).length < 1){
+						o.onIdle.call(getMenu($$));
+						if (o.$path.length){
+							$.proxy(over,o.$path,e)();
+						}
 					}
 				};
 				if (e.type === 'click' || sf.ios){
 					close();
 				} else {
-					clearTimeout(menu.sfTimer);
-					menu.sfTimer=setTimeout(close,o.delay);
+					clearTimeout(o.sfTimer);
+					o.sfTimer=setTimeout(close,o.delay);
 				}
 			},
-			getMenu = function($child){
-				if ($child.hasClass(c.menuClass)){
-					$.error('Superfish requires you to update to a version of hoverIntent that supports event-delegation, such as this one: https://github.com/joeldbirch/onHoverIntent');
-				}
-				var menu = $child.closest('.'+c.menuClass)[0];
-				sf.op = sf.o[menu.serial];
-				return menu;
+			getMenu = function($el){
+				return $el.closest('.'+c.menuClass);
+			},
+			getOptions = function($el) {
+				return getMenu($el).data('sf-options');
 			},
 			applyTouchAction = function($menu){
        //needed by MS pointer events
@@ -52,8 +53,8 @@
 			},
 			applyHandlers = function($menu,o){
 				var targets = 'li:has(ul)';
-				if (!sf.op.useClick){
-					if ($.fn.hoverIntent && !sf.op.disableHI){
+				if (!o.useClick){
+					if ($.fn.hoverIntent && !o.disableHI){
 						$menu.hoverIntent(over, out, targets);
 					} else {
 						$menu
@@ -84,14 +85,15 @@
       },
 			clickHandler = function(e){
 				var $a = $(this),
+						o = e.data,
 						$submenu = $a.siblings('ul'),
 						follow = ($a.data('follow') === false) ? false : true;
 
-				if ( $submenu.length && (e.data.useClick || !follow) ){
+				if ( $submenu.length && (o.useClick || !follow) ){
 					e.preventDefault();
 					if ($submenu.is(':hidden')){
 						$.proxy(over,$a.parent('li'))();
-					} else if (e.data.useClick && follow) {
+					} else if (o.useClick && follow) {
 						$.proxy(out,$a.parent('li'),e)();
 					}
 				}
@@ -105,16 +107,20 @@
 			},
 			addArrow = function($a){ $a.addClass(c.anchorClass).append($arrow.clone()); };
 			
+		sf.getOptions = getOptions;
+
 		return this.addClass(c.menuClass).each(function() {
 			var $$ = $(this);
-			var s = this.serial = sf.o.length;
-			var o = $.extend({},sf.defaults,op);
+			var	o = $.extend({}, sf.defaults, op);
 			var $liHasUl = $$.find('li:has(ul)');
-			o.$path = $$.find('li.'+o.pathClass).slice(0,o.pathLevels).each(function(){
-				$(this).addClass(o.hoverClass+' '+c.bcClass)
-					.filter('li:has(ul)').removeClass(o.pathClass);
-			});
-			sf.o[s] = sf.op = o;
+
+			o.$path = $$.find('li.'+o.pathClass).slice(0,o.pathLevels)
+				.each(function(){
+					$(this).addClass(o.hoverClass+' '+c.bcClass)
+						.filter('li:has(ul)').removeClass(o.pathClass);
+				});
+
+			$$.data('sf-options',o);
 			
 			addArrows($liHasUl,o);
 			applyTouchAction($$);
@@ -159,11 +165,11 @@
 	sf.ios = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 	$.fn.extend({
 		hideSuperfishUl: function(){
-			var o = sf.op,
-				$$ = this,
+			var $$ = this,
+				o = sf.getOptions($$),
 				not = (o.retainPath===true) ? o.$path : '';
 			o.retainPath = false;
-			var $ul = $('li.'+o.hoverClass,this).add(this).not(not).removeClass(o.hoverClass).children('ul');
+			var $ul = $$.find('li.'+o.hoverClass).addBack().not(not).removeClass(o.hoverClass).children('ul');
 				o.onBeforeHide.call($ul);
 				$ul.stop(true,true).animate(o.animationOut,o.speedOut,function(){
 					o.onHide.call($(this));
@@ -174,7 +180,7 @@
 			return this;
 		},
 		showSuperfishUl: function(){
-			var o = sf.op,
+			var o = sf.getOptions(this),
 				$$ = this.addClass(o.hoverClass),
 				$ul = $$.children('ul');
 			o.onBeforeShow.call($ul);
