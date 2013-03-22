@@ -17,8 +17,6 @@ Please use the [existing Superfish documentation](http://users.tpg.com.au/j_birc
 
 ## Recently added features
 
-- CSS refactor for easier customisation.
-- Full support for touch devices. Touch to open submenus, touch again to follow the link. A simple solution for responsive web design: add some CSS media queries and use the same menu code-base at all screen sizes.
-- IE10 has touch behaviour consistent with all other touch-enabled browsers despite its new pointer events system. Mouse events and keyboard access all work as per normal.
-- Submenu closing animations. Customisable separately to opening animations.
-- Uses event delegation for improved initialisation performance.
+- Full CSS refactor for easier customisation. Supports unlimited levels of nested submenus.
+- Full support for touch devices. Android browsers, iOS Safari, IE9 on Windows Phone 7, Windows 8 IE10 with touchscreen. Touch to open submenus, touch again to follow the link. Be sure to include hoverIntent for widest support.
+- iOS Safari submenus can now be closed and its pesky hover state is now properly reset after using the browser's "back" button.
