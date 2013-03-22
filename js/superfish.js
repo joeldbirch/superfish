@@ -172,7 +172,7 @@
 				o = sf.getOptions($$),
 				not = (o.retainPath===true) ? o.$path : '';
 			o.retainPath = false;
-			var $ul = $$.find('li.'+o.hoverClass).addBack().not(not).removeClass(o.hoverClass).children('ul');
+			var $ul = $$.find('li.'+o.hoverClass).add(this).not(not).removeClass(o.hoverClass).children('ul');
 				o.onBeforeHide.call($ul);
 				$ul.stop(true,true).animate(o.animationOut,o.speedOut,function(){
 					o.onHide.call($(this));
