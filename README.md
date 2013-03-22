@@ -20,3 +20,4 @@ Please use the [existing Superfish documentation](http://users.tpg.com.au/j_birc
 - Full CSS refactor for easier customisation. Supports unlimited levels of nested submenus.
 - Full support for touch devices. Android browsers, iOS Safari, IE9 on Windows Phone 7, Windows 8 IE10 with touchscreen. Touch to open submenus, touch again to follow the link. Be sure to include hoverIntent for widest support.
 - iOS Safari submenus can now be closed and its pesky hover state is now properly reset after using the browser's "back" button.
+- Supersubs plugin replaced by a couple of lines of CSS. The width of each submenu will be determined by its widest child list item. To disable, just remove the `white-space` rule in the main CSS file.
