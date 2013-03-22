@@ -63,9 +63,8 @@
 					}
 				}
 				var touchstart = 'MSPointerDown';
-				if ( !sf.ios ){
-					touchstart += ' touchstart';
-				}
+				if ( !sf.ios ){ touchstart += ' touchstart'; }
+				if ( sf.wp7 ){ touchstart += ' mousedown'; }
 				$menu
 					.on('focusin', 'li', over)
 					.on('focusout', 'li', out)
@@ -166,6 +165,10 @@
 		onIdle: $.noop
 	};
 	sf.ios = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+	sf.wp7 = (function(){
+		var style = document.documentElement.style;
+		return ('behavior' in style && 'fill' in style && /iemobile/i.test(navigator.userAgent));
+	})();
 	$.fn.extend({
 		hideSuperfishUl: function(instant){
 			var $$ = this,
