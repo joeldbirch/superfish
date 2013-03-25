@@ -14,7 +14,7 @@
 
 		var sf = $.fn.superfish,
 			c = sf.c,
-			$arrow = $('<span class="' + c.arrowClass+'"> &#187;</span>'),
+			$arrow = $('<span class="' + c.arrowClass + '"> &#187;</span>'),
 			over = function() {
 				var $this = $(this),
 					o = getOptions($this);
@@ -26,10 +26,10 @@
 				var $this = $(this),
 					o = getOptions($this);
 
-				if (e.type === 'click' || sf.ios)
+				if (e.type === 'click' || sf.ios) {
 					$.proxy(close, $this, o)();
-				else
-				{
+				}
+				else {
 					clearTimeout(o.sfTimer);
 					o.sfTimer=setTimeout($.proxy(close, $this, o), o.delay);
 				}
@@ -37,11 +37,12 @@
 			close = function(o) {
 				o.retainPath=( $.inArray(this[0], o.$path) > -1);
 				this.hideSuperfishUl();
-				if (!this.parents('.' + o.hoverClass).length)
-				{
+
+				if (!this.parents('.' + o.hoverClass).length) {
 					o.onIdle.call(getMenu(this));
-					if (o.$path.length)
+					if (o.$path.length) {
 						$.proxy(over, o.$path)();
+					}
 				}
 			},
 			getMenu = function($el) {
@@ -58,10 +59,10 @@
 				var targets = 'li:has(ul)';
 
 				if (!o.useClick) {
-					if ($.fn.hoverIntent && !o.disableHI)
+					if ($.fn.hoverIntent && !o.disableHI) {
 						$menu.hoverIntent(over, out, targets);
-					else
-					{
+					}
+					else {
 						$menu
 							.on('mouseenter', targets, over)
 							.on('mouseleave', targets, out);
@@ -69,10 +70,12 @@
 				}
 				var touchstart = 'MSPointerDown';
 
-				if ( !sf.ios )
+				if (!sf.ios) {
 					touchstart += ' touchstart';
-				if ( sf.wp7 )
+				}
+				if (sf.wp7) {
 					touchstart += ' mousedown';
+				}
 				$menu
 					.on('focusin', 'li', over)
 					.on('focusout', 'li', out)
@@ -83,11 +86,9 @@
 				var $this = $(this),
 					$ul = $this.siblings('ul');
 
-				if ($ul.length > 0 && $ul.is(':hidden'))
-				{
+				if ($ul.length > 0 && $ul.is(':hidden')) {
 					$this.data('follow', false);
-					if (e.type === 'MSPointerDown')
-					{
+					if (e.type === 'MSPointerDown') {
 						$this.trigger('focus');
 						return false;
 					}
@@ -99,13 +100,14 @@
 					$submenu = $a.siblings('ul'),
 					follow = ($a.data('follow') === false) ? false : true;
 
-				if ($submenu.length && (o.useClick || !follow))
-				{
+				if ($submenu.length && (o.useClick || !follow)) {
 					e.preventDefault();
-					if ($submenu.is(':hidden'))
+					if ($submenu.is(':hidden')) {
 						$.proxy(over, $a.parent('li'))();
-					else if (o.useClick && follow)
+					}
+					else if (o.useClick && follow) {
 						$.proxy(out, $a.parent('li'), e)();
+					}
 				}
 			},
 			setPathToCurrent = function($menu, o) {
@@ -116,8 +118,7 @@
 						}).removeClass(o.pathClass);
 			},
 			addArrows = function($li, o) {
-				if (o.autoArrows)
-				{
+				if (o.autoArrows) {
 					$li.children('a').each(function() {
 						addArrow( $(this) );
 					});
@@ -190,8 +191,7 @@
 				$ul = $this.find('li.' + o.hoverClass).add(this).not(not).removeClass(o.hoverClass).children('ul'),
 				speed = o.speedOut;
 
-			if (instant)
-			{
+			if (instant) {
 				$ul.show();
 				speed = 0;
 			}
@@ -199,8 +199,9 @@
 			o.onBeforeHide.call($ul);
 			$ul.stop(true, true).animate(o.animationOut, speed, function() {
 				o.onHide.call($(this));
-				if (o.useClick)
+				if (o.useClick) {
 					$this.children('a').data('follow', false);
+				}
 			});
 			return this;
 		},
@@ -218,12 +219,16 @@
 		}
 	});
 
-	if ( sf.ios ) {
+	if (sf.ios) {
 		// iOS click won't bubble to body, attach to closest possible
-		$(window).load(function() { $('body').children().on('click', $.noop); });
+		$(window).load(function() { 
+			$('body').children().on('click', $.noop); 
+		});
 		$(window).on('pageshow', function(e) {
 			// only way to reset subs after back button click. Seriously.
-			if (e.originalEvent.persisted) { window.location.reload(); }
+			if (e.originalEvent.persisted) {
+				window.location.reload(); 
+			}
 		});
 	}
 
