@@ -197,7 +197,7 @@
 			o.onBeforeShow.call($ul);
 			$ul.stop(true,true).animate(o.animation,o.speed,function(){
 				o.onShow.call($ul);
-				$$.children('a').data('follow', true);
+				$$.find('a').data('follow', false);
 			});
 			return this;
 		}
