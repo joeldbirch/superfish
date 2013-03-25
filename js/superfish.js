@@ -221,13 +221,13 @@
 
 	if (sf.ios) {
 		// iOS click won't bubble to body, attach to closest possible
-		$(window).load(function() { 
-			$('body').children().on('click', $.noop); 
+		$(window).load(function() {
+			$('body').children().on('click', $.noop);
 		});
 		$(window).on('pageshow', function(e) {
 			// only way to reset subs after back button click. Seriously.
 			if (e.originalEvent.persisted) {
-				window.location.reload(); 
+				window.location.reload();
 			}
 		});
 	}
