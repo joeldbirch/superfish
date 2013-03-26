@@ -108,3 +108,5 @@ v1.6.0 		10 Mar 20113. Refactor CSS to allow unlimited menu-tiers without needin
 v1.6.1 		Fix issue #30 regarding submenus flashing open and closed under certain conditions in Firefox. Remove bgiframe JS file as part of degraded IE6 support.
 
 v1.6.2 		v1.6.1 was mislabelled as v1.6.0 in the superfish.js file.
+
+v1.6.3 		Merge pull request from @Spuds. Makes whitespace and other coding styles consistent, finally!

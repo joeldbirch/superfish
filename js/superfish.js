@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.6.2 - jQuery menu widget
+ * Superfish v1.6.3 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -31,11 +31,11 @@
 				}
 				else {
 					clearTimeout(o.sfTimer);
-					o.sfTimer=setTimeout($.proxy(close, $this, o), o.delay);
+					o.sfTimer = setTimeout($.proxy(close, $this, o), o.delay);
 				}
 			},
 			close = function(o) {
-				o.retainPath=( $.inArray(this[0], o.$path) > -1);
+				o.retainPath = ( $.inArray(this[0], o.$path) > -1);
 				this.hideSuperfishUl();
 
 				if (!this.parents('.' + o.hoverClass).length) {
