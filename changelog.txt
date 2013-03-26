@@ -111,4 +111,4 @@ v1.6.2 		v1.6.1 was mislabelled as v1.6.0 in the superfish.js file.
 
 v1.6.3 		Merge pull request from @Spuds. Makes whitespace and other coding styles consistent, finally!
 
-v1.6.4 		v1.6.1 caused links with subs to be unfollowable. Quickfix is to (more or less) revert that change. Issue #30 will be reopened until I have a real solution.
+v1.6.4 		v1.6.1 caused links with subs to be unfollowable. Quickfix is to (more or less) revert that change. Issue #31 will be reopened until I have a real solution.
