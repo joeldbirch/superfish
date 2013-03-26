@@ -13,7 +13,8 @@ Please use the [existing Superfish documentation](http://users.tpg.com.au/j_birc
 - As of Superfish v1.5.1 if you wish to enhance your menu with Brian Cherne's hoverIntent plugin (highly recommended) you will need to use [the latest version (r7) which now supports event delegation](https://github.com/briancherne/jquery-hoverIntent).
 - Follow this link if you need an [easy solution to address a hoverIntent conflict with WordPress](https://github.com/joeldbirch/superfish/issues/14#issuecomment-14554500).
 
-### Download [Superfish zip archive](https://github.com/joeldbirch/superfish/archive/master.zip)
+### Download [Superfish zip archive](http://users.tpg.com.au/j_birch/plugins/superfish/superfish.zip)
+Downloading the zip from GitHub's server is currently erroring. The above is a temporary alternate link to the zip archive.
 
 ## Recently added features
 
