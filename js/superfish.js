@@ -14,7 +14,6 @@
 
 		var sf = $.fn.superfish,
 			c = sf.c,
-			$arrow = $('<span class="' + c.arrowClass + '"> &#187;</span>'),
 			over = function() {
 				var $this = $(this),
 					o = getOptions($this);
@@ -116,20 +115,20 @@
 							return ($(this).children('ul').hide().show().length);
 						}).removeClass(o.pathClass);
 			},
-			addArrows = function($li, o) {
-				if (o.autoArrows) {
-					$li.children('a').each(function() {
-						addArrow( $(this) );
-					});
-				}
+			addAnchorClass = function($li) {
+				$li.children('a').addClass(c.anchorClass);
 			},
-			addArrow = function($a) {
-				$a.addClass(c.anchorClass).append($arrow.clone());
+			addMenuClasses = function($menu, o) {
+				var classes = c.menuClass;
+				if (o.cssArrows) {
+					classes += ' ' + c.menuArrowClass;
+				}
+				$menu.addClass(classes);
 			};
 
 		sf.getOptions = getOptions;
 
-		return this.addClass(c.menuClass).each(function() {
+		return this.each(function() {
 			var $this = $(this),
 				o = $.extend({}, sf.defaults, op),
 				$liHasUl = $this.find('li:has(ul)');
@@ -137,8 +136,9 @@
 			o.$path = setPathToCurrent($this, o);
 
 			$this.data('sf-options', o);
-
-			addArrows($liHasUl, o);
+			
+			addMenuClasses($this, o);
+			addAnchorClass($liHasUl);
 			applyTouchAction($this);
 			applyHandlers($this, o);
 
@@ -156,7 +156,7 @@
 		bcClass: 'sf-breadcrumb',
 		menuClass: 'sf-js-enabled',
 		anchorClass: 'sf-with-ul',
-		arrowClass: 'sf-sub-indicator'
+		menuArrowClass: 'sf-arrows'
 	};
 	sf.defaults = {
 		hoverClass: 'sfHover',
@@ -167,7 +167,7 @@
 		animationOut: {opacity:'hide'},
 		speed: 'normal',
 		speedOut: 'fast',
-		autoArrows: true,
+		cssArrows: true,
 		disableHI: false,		// true disables hoverIntent detection
 		useClick: false,
 		onInit: $.noop, // callback functions
