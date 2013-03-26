@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.6.3 - jQuery menu widget
+ * Superfish v1.6.4 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -213,7 +213,7 @@
 			o.onBeforeShow.call($ul);
 			$ul.stop(true, true).animate(o.animation, o.speed, function() {
 				o.onShow.call($ul);
-				$this.find('a').data('follow', false);
+				$this.find('a').data('follow', true);
 			});
 			return this;
 		}
