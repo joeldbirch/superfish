@@ -114,3 +114,5 @@ v1.6.3 		Merge pull request from @Spuds. Makes whitespace and other coding style
 v1.6.4 		v1.6.1 caused links with subs to be unfollowable. Quickfix is to (more or less) revert that change. Issue #31 will be reopened until I have a real solution.
 
 v1.6.4.1 	Didn't get the previous fix right.
+
+v1.6.5 		jQuery Plugin Registry doesn't like such granular version numbers.

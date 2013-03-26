@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.6.4.1 - jQuery menu widget
+ * Superfish v1.6.5 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
