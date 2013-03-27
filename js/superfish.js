@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.6.5 - jQuery menu widget
+ * Superfish v1.6.6 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -132,6 +132,7 @@
 
 		return this.addClass(c.menuClass).each(function() {
 			var $this = $(this),
+				$subsToHide,
 				o = $.extend({}, sf.defaults, op),
 				$liHasUl = $this.find('li:has(ul)');
 
@@ -143,8 +144,11 @@
 			applyTouchAction($this);
 			applyHandlers($this, o);
 
-			$liHasUl.not('.' + c.bcClass).hideSuperfishUl(true);
-
+			$subsToHide = $liHasUl.not('.' + c.bcClass);
+			if ($subsToHide.length) {
+				$subsToHide.hideSuperfishUl(true);
+			}
+			
 			o.onInit.call(this);
 		});
 	};
