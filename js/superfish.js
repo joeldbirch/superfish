@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.6.6 - jQuery menu widget
+ * Superfish v1.6.7 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -132,7 +132,6 @@
 
 		return this.addClass(c.menuClass).each(function() {
 			var $this = $(this),
-				$subsToHide,
 				o = $.extend({}, sf.defaults, op),
 				$liHasUl = $this.find('li:has(ul)');
 
@@ -144,11 +143,8 @@
 			applyTouchAction($this);
 			applyHandlers($this, o);
 
-			$subsToHide = $liHasUl.not('.' + c.bcClass);
-			if ($subsToHide.length) {
-				$subsToHide.hideSuperfishUl(true);
-			}
-			
+			$liHasUl.not('.' + c.bcClass).hideSuperfishUl(true);
+
 			o.onInit.call(this);
 		});
 	};
@@ -189,24 +185,26 @@
 	})();
 	$.fn.extend({
 		hideSuperfishUl: function(instant) {
-			var $this = this,
-				o = sf.getOptions($this),
-				not = (o.retainPath === true) ? o.$path : '',
-				$ul = $this.find('li.' + o.hoverClass).add(this).not(not).removeClass(o.hoverClass).children('ul'),
-				speed = o.speedOut;
+			if (this.length) {
+				var $this = this,
+					o = sf.getOptions($this),
+					not = (o.retainPath === true) ? o.$path : '',
+					$ul = $this.find('li.' + o.hoverClass).add(this).not(not).removeClass(o.hoverClass).children('ul'),
+					speed = o.speedOut;
 
-			if (instant) {
-				$ul.show();
-				speed = 0;
-			}
-			o.retainPath = false;
-			o.onBeforeHide.call($ul);
-			$ul.stop(true, true).animate(o.animationOut, speed, function() {
-				o.onHide.call($(this));
-				if (o.useClick) {
-					$this.children('a').data('follow', false);
+				if (instant) {
+					$ul.show();
+					speed = 0;
 				}
-			});
+				o.retainPath = false;
+				o.onBeforeHide.call($ul);
+				$ul.stop(true, true).animate(o.animationOut, speed, function() {
+					o.onHide.call($(this));
+					if (o.useClick) {
+						$this.children('a').data('follow', false);
+					}
+				});
+			}
 			return this;
 		},
 		showSuperfishUl: function() {

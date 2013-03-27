@@ -118,3 +118,5 @@ v1.6.4.1 	Didn't get the previous fix right.
 v1.6.5 		jQuery Plugin Registry doesn't like such granular version numbers.
 
 v1.6.6 		Fix issue #36. https://github.com/joeldbirch/superfish/issues/36
+
+v1.6.7 		Fix second part of issue #36, where there is only one submenu.
