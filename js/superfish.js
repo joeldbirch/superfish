@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.6.7 - jQuery menu widget
+ * Superfish v1.6.8 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -225,12 +225,6 @@
 		// iOS click won't bubble to body, attach to closest possible
 		$(window).load(function() {
 			$('body').children().on('click', $.noop);
-		});
-		$(window).on('pageshow', function(e) {
-			// only way to reset subs after back button click. Seriously.
-			if (e.originalEvent.persisted) {
-				window.location.reload();
-			}
 		});
 	}
 

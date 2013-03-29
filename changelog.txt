@@ -120,3 +120,5 @@ v1.6.5 		jQuery Plugin Registry doesn't like such granular version numbers.
 v1.6.6 		Fix issue #36. https://github.com/joeldbirch/superfish/issues/36
 
 v1.6.7 		Fix second part of issue #36, where there is only one submenu.
+
+v1.6.8 		Remove bfcache busting code after issue #37 discussion: https://github.com/joeldbirch/superfish/issues/37 . Bfcache busting deemed an unsuitable solution for Apple's buggy hover state after back button is used, but the code can be found at https://gist.github.com/joeldbirch/5268562 if needed.
