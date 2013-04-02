@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.6.9 - jQuery menu widget
+ * Superfish v1.6.10 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -20,7 +20,7 @@
 					o = getOptions($this);
 
 				clearTimeout(o.sfTimer);
-				$this.showSuperfishUl().siblings().hideSuperfishUl();
+				$this.siblings().hideSuperfishUl().end().showSuperfishUl();
 			},
 			out = function(e) {
 				var $this = $(this),
@@ -51,9 +51,12 @@
 			getOptions = function($el) {
 				return getMenu($el).data('sf-options');
 			},
-			applyTouchAction = function($menu) {
-				// needed by MS pointer events
-				$menu.css('ms-touch-action', 'none');
+			applyTouchAction = function($menu,o) {
+				// do not apply if click is enabled
+				if (!o.useClick) {
+					// needed by MS pointer events
+					$menu.css('ms-touch-action', 'none');
+				}
 			},
 			applyHandlers = function($menu,o) {
 				var targets = 'li:has(ul)';
@@ -77,23 +80,41 @@
 					touchstart += ' mousedown';
 				}
 				$menu
-					.on('focusin', 'li', over)
-					.on('focusout', 'li', out)
+					.on('focusin mousedown', 'li', focusHandler)
+					.on('focusout mousedown', 'li', focusHandler)
 					.on('click', 'a', o, clickHandler)
 					.on(touchstart, 'a', touchHandler);
 			},
 			touchHandler = function(e) {
 				var $this = $(this),
+					o = e.data,
 					$ul = $this.siblings('ul');
 
 				if ($ul.length > 0 && $ul.is(':hidden')) {
 					$this.data('follow', false);
-					if (e.type === 'MSPointerDown') {
+					
+					if (e.type === 'MSPointerDown' && !o.useClick) {
 						$this.trigger('focus');
 						return false;
 					}
 				}
 			},
+			focusHandler = function(e){
+				var $li = $(this);
+				
+				if ( e.type === "mousedown") {
+					$li.data("clicked", true);
+				};
+				
+				var isClick = ($li.data("clicked") === true) ? true : false;
+				
+				if (e.type == "focusin" && !isClick) {
+					$.proxy(over,$li)()
+					$li.data("clicked", false);
+				} else if (!isClick) {
+					$.proxy(out,$li,e)()
+				};
+			},	
 			clickHandler = function(e) {
 				var $a = $(this),
 					o = e.data,
@@ -140,7 +161,7 @@
 			$this.data('sf-options', o);
 
 			addArrows($liHasUl, o);
-			applyTouchAction($this);
+			applyTouchAction($this, o);
 			applyHandlers($this, o);
 
 			$liHasUl.not('.' + c.bcClass).hideSuperfishUl(true);
