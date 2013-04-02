@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.6.8 - jQuery menu widget
+ * Superfish v1.6.9 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -199,9 +199,10 @@
 				o.retainPath = false;
 				o.onBeforeHide.call($ul);
 				$ul.stop(true, true).animate(o.animationOut, speed, function() {
-					o.onHide.call($(this));
+					var $this = $(this);
+					o.onHide.call($this);
 					if (o.useClick) {
-						$this.children('a').data('follow', false);
+						$this.siblings('a').data('follow', false);
 					}
 				});
 			}
