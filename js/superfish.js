@@ -52,8 +52,7 @@
 				return getMenu($el).data('sf-options');
 			},
 			applyTouchAction = function($menu) {
-				// needed by MS pointer events
-				$menu.css('ms-touch-action', 'none');
+				$menu.css('ms-touch-action', 'pan-y');
 			},
 			applyHandlers = function($menu,o) {
 				var targets = 'li:has(ul)';
