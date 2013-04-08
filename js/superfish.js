@@ -25,7 +25,7 @@
 				var $this = $(this),
 					o = getOptions($this);
 
-				if (e.type === 'click' || sf.ios) {
+				if (sf.ios) {
 					$.proxy(close, $this, o)();
 				}
 				else {
@@ -56,16 +56,15 @@
 			applyHandlers = function($menu,o) {
 				var targets = 'li:has(ul)';
 
-				if (!o.useClick) {
-					if ($.fn.hoverIntent && !o.disableHI) {
-						$menu.hoverIntent(over, out, targets);
-					}
-					else {
-						$menu
-							.on('mouseenter', targets, over)
-							.on('mouseleave', targets, out);
-					}
+				if ($.fn.hoverIntent && !o.disableHI) {
+					$menu.hoverIntent(over, out, targets);
 				}
+				else {
+					$menu
+						.on('mouseenter', targets, over)
+						.on('mouseleave', targets, out);
+				}
+
 				var touchstart = 'MSPointerDown';
 
 				if (!sf.ios) {
@@ -98,13 +97,10 @@
 					$submenu = $a.siblings('ul'),
 					follow = ($a.data('follow') === false) ? false : true;
 
-				if ($submenu.length && (o.useClick || !follow)) {
+				if ($submenu.length && !follow) {
 					e.preventDefault();
 					if ($submenu.is(':hidden')) {
 						$.proxy(over, $a.parent('li'))();
-					}
-					else if (o.useClick && follow) {
-						$.proxy(out, $a.parent('li'), e)();
 					}
 				}
 			},
@@ -169,7 +165,6 @@
 		speedOut: 'fast',
 		cssArrows: true,
 		disableHI: false,		// true disables hoverIntent detection
-		useClick: false,
 		onInit: $.noop, // callback functions
 		onBeforeShow: $.noop,
 		onShow: $.noop,
@@ -200,9 +195,6 @@
 				$ul.stop(true, true).animate(o.animationOut, speed, function() {
 					var $this = $(this);
 					o.onHide.call($this);
-					if (o.useClick) {
-						$this.siblings('a').data('follow', false);
-					}
 				});
 			}
 			return this;
