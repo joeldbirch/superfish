@@ -19,7 +19,7 @@
 					o = getOptions($this);
 
 				clearTimeout(o.sfTimer);
-				$this.showSuperfishUl().siblings().hideSuperfishUl();
+				$this.siblings().hideSuperfishUl().end().showSuperfishUl();
 			},
 			out = function(e) {
 				var $this = $(this),
