@@ -145,8 +145,6 @@
 	};
 
 	var sf = $.fn.superfish;
-	sf.o = [];
-	sf.op = {};
 
 	sf.c = {
 		bcClass: 'sf-breadcrumb',
