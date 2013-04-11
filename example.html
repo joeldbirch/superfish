@@ -9,10 +9,35 @@
 		<script src="js/superfish.js"></script>
 		<script>
 
-		// initialise plugins
-		jQuery(function(){
-			jQuery('#example').superfish();
-		});
+		(function($){ //create closure so we can safely use $ as alias for jQuery
+
+			$(document).ready(function(){
+
+				// initialise plugin
+				var example = $('#example').superfish({
+					//add options here if required
+				});
+
+				// buttons to demonstrate Superfish's public methods
+				$('.destroy').on('click', function(){
+					example.superfish('destroy');
+				});
+
+				$('.init').on('click', function(){
+					example.superfish();
+				});
+
+				$('.open').on('click', function(){
+					example.children('li:first').superfish('show');
+				});
+
+				$('.close').on('click', function(){
+					example.children('li:first').superfish('hide');
+				});
+			});
+
+		})(jQuery);
+
 
 		</script>
 	</head>
@@ -120,5 +145,9 @@
 		</ul>
 		<p style="clear:both;">Morbi pulvinar ornare mauris. Vivamus ut ipsum. Fusce vitae pede. Etiam sodales, libero vitae ultricies vestibulum, elit eros aliquam pede, auctor lobortis enim ligula non nibh. Quisque molestie, nibh ac malesuada ultricies, metus urna adipiscing dui, tincidunt fermentum lectus velit ac ipsum. Curabitur ultrices ipsum et tortor. Nullam non felis ornare sem laoreet viverra.</p>
 		<p>Nunc turpis ligula, auctor ut, iaculis porta, consequat vel, turpis. Suspendisse sed diam. In scelerisque condimentum tellus. Vivamus et velit a ante consectetuer tempor. Nunc vitae mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Suspendisse lacinia, lacus a posuere molestie, tellus diam ullamcorper est, in mattis elit nisi nec odio. Aliquam a sem sit amet dolor viverra ornare. Curabitur elit velit, tempus vel, tempus at, ultricies non, arcu. Duis viverra tempus tellus. Duis dignissim convallis tortor. Phasellus nisl.</p>
+		<button class="open">Open first submenu</button>
+		<button class="close">Close first submenu</button>
+		<button class="destroy">Destroy Superfish</button>
+		<button class="init">Restore Superfish</button>
 	</body>
 </html>
