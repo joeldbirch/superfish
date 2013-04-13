@@ -1,4 +1,3 @@
-
 /*** adding the class sf-navbar in addition to sf-menu creates an all-horizontal nav-bar menu ***/
 .sf-navbar {
 	background: #BDD2FF;
@@ -62,7 +61,6 @@
 .sf-navbar ul ul li.current {
 	background: #E6EEFF;
 }
-
 .sf-navbar ul li.current > a {
 	font-weight: bold;
 }

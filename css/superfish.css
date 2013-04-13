@@ -1,4 +1,3 @@
-
 /*** ESSENTIAL STYLES ***/
 .sf-menu, .sf-menu * {
 	margin: 0;
@@ -48,7 +47,7 @@
 	border-top: 1px solid #dFeEFF; /* fallback colour must use full shorthand */
 	border-top: 1px solid rgba(255,255,255,.5);
 	padding: .75em 1em;
-	text-decoration:none;
+	text-decoration: none;
 	zoom: 1; /* IE7 */
 }
 .sf-menu a {
