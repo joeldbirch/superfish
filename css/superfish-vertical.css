@@ -1,11 +1,22 @@
 /* adding sf-vertical class in addition to sf-menu creates a vertical menu */
 /* eg. <ul class="sf-menu sf-vertical"> ... */
 .sf-vertical {
-	width:	10em;
+  width: 12em;
+  /* If you want the width of the closed menu to expand to its
+  widest top-level menu item (like its "Supersubs" submenus do),
+  replace the width rule above with the following two rules. */
+
+  /*
+  min-width: 12em;
+  *width: 12em;
+  */
 }
 .sf-vertical ul {
 	left:	100%;
-	top:	0;
+	top: 0;
+}
+.sf-vertical > li {
+  float: none;
 }
 .sf-vertical li {
   width: 100%;
