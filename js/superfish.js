@@ -1,11 +1,10 @@
 /*
- * Superfish v1.6.9 - jQuery menu widget
+ * Superfish v1.7 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
  * 	http://www.opensource.org/licenses/mit-license.php
  * 	http://www.gnu.org/licenses/gpl.html
- *
  */
 
 ;(function($) {
