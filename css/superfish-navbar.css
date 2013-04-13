@@ -1,4 +1,3 @@
-
 /*** adding the class sf-navbar in addition to sf-menu creates an all-horizontal nav-bar menu ***/
 .sf-navbar {
 	background: #BDD2FF;
@@ -62,14 +61,22 @@
 .sf-navbar ul ul li.current {
 	background: #E6EEFF;
 }
-
 .sf-navbar ul li.current > a {
 	font-weight: bold;
 }
 
 /*** point all arrows down ***/
-.sf-navbar ul a .sf-sub-indicator { background-position: 0 -100px; }
-.sf-navbar ul li:hover > a .sf-sub-indicator,
-.sf-navbar ul li.sfHover > a .sf-sub-indicator {
-	background-position: -10px -100px;
+.sf-arrows.sf-navbar ul .sf-with-ul:after {
+	margin-top: -3px;
+	margin-right: 0;
+	border-color: transparent;
+	border-top-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
+	border-top-color: rgba(255,255,255,.5);
+}
+
+.sf-arrows.sf-navbar ul > li > .sf-with-ul:focus:after,
+.sf-arrows.sf-navbar ul > li:hover > .sf-with-ul:after,
+.sf-arrows.sf-navbar ul > .sfHover > .sf-with-ul:after {
+	border-color: transparent;
+	border-top-color: white;
 }
