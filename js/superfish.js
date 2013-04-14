@@ -172,8 +172,11 @@
 			destroy: function() {
 				return this.each(function(){
 					var $this = $(this),
-						o = getOptions($this),
+						o = $this.data('sf-options'),
 						$liHasUl = $this.find('li:has(ul)');
+					if (!o) {
+						return false;
+					}
 					clearTimeout(o.sfTimer);
 					toggleMenuClasses($this, o);
 					toggleAnchorClass($liHasUl);
