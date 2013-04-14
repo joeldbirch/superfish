@@ -139,8 +139,11 @@
 			hide: function(instant) {
 				if (this.length) {
 					var $this = this,
-						o = getOptions($this),
-						not = (o.retainPath === true) ? o.$path : '',
+						o = getOptions($this);
+						if (!o) {
+							return this;
+						}
+					var not = (o.retainPath === true) ? o.$path : '',
 						$ul = $this.find('li.' + o.hoverClass).add(this).not(not).removeClass(o.hoverClass).children('ul'),
 						speed = o.speedOut;
 
@@ -158,8 +161,11 @@
 				return this;
 			},
 			show: function() {
-				var o = getOptions(this),
-					$this = this.addClass(o.hoverClass),
+				var o = getOptions(this);
+				if (!o) {
+					return this;
+				}
+				var $this = this.addClass(o.hoverClass),
 					$ul = $this.children('ul');
 
 				o.onBeforeShow.call($ul);
