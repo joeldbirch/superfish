@@ -18,19 +18,20 @@ describe "Superfish", ->
     expect($menu).toBe 'ul'
 
   it "should store options", ->
-    expect($menu.data('sf-options')).toBeDefined()
-  
+    expect($menu.data 'sf-options' ).toBeDefined()
+
+
   describe "options", ->
-    
+
     it "should have default options", ->
-      options = $menu.data('sf-options')
+      options = $menu.data 'sf-options'
       expect(options.speed).toMatch 'normal'
 
     it "should allow default options to be overridden", ->
       $menu.superfish 'destroy'
       $menu.superfish
         speed: 1000
-      options = $menu.data('sf-options')
+      options = $menu.data 'sf-options'
       expect(options.speed).toEqual 1000
 
 
@@ -40,10 +41,10 @@ describe "Superfish", ->
 
     beforeEach ->
       $liHasUl = $menu.find('li:has(ul):first')
-    
+
     it "'show' method should exist", ->
       expect($liHasUl.superfish('show')).toBeDefined()
-    
+
     it "'hide' method should exist", ->
       expect($liHasUl.superfish('hide')).toBeDefined()
 
@@ -68,4 +69,3 @@ describe "Superfish", ->
           $menu.superfish('destroy')
           $menu.superfish('destroy')
         ).not.toThrow new Error("Uncaught TypeError: Cannot read property 'sfTimer' of null")
-      
