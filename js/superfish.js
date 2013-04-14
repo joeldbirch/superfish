@@ -224,7 +224,7 @@
       return methods.init.apply(this, arguments);
     }
     else {
-      $.error('Method ' +  method + ' does not exist on jQuery.fn.superfish');
+      return $.error('Method ' +  method + ' does not exist on jQuery.fn.superfish');
     }
 	};
 
