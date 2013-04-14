@@ -79,4 +79,9 @@ describe "Superfish", ->
       it "should fail silently if Superfish is uninitialised", ->
         $menu.superfish('destroy')
         expect( $liHasUl.superfish('show') ).toBe 'li'
-      
+  
+
+    describe "'hide' method", ->
+      it "should fail silently if Superfish is uninitialised", ->
+        $menu.superfish('destroy')
+        expect( $liHasUl.superfish('hide') ).toBe 'li'
