@@ -5,8 +5,9 @@ describe "Superfish", ->
   $menu = null
 
   beforeEach ->
-    $menu = $('ul.sf-menu').superfish()
-
+    $menu = $('ul.sf-menu')
+    $menu.superfish()
+  
   afterEach ->
     $menu.superfish 'destroy'
 
@@ -15,7 +16,8 @@ describe "Superfish", ->
     expect($.fn.superfish).toBeDefined()
 
   it "should be chainable", ->
-    expect($menu).toBe 'ul'
+    $menu.superfish 'destroy'
+    expect($menu.superfish()).toBe 'ul'
 
   it "should store options", ->
     expect($menu.data 'sf-options' ).toBeDefined()
@@ -49,7 +51,8 @@ describe "Superfish", ->
       expect($liHasUl.superfish('hide')).toBeDefined()
 
     it "'destroy' method should exist", ->
-      expect($liHasUl.superfish('destroy')).toBeDefined()
+      expect($menu.superfish('destroy')).toBeDefined()
+      $menu.superfish()
 
     it "should not allow access to private functions", ->
       expect( ->
@@ -65,7 +68,15 @@ describe "Superfish", ->
     describe "'destroy' method", ->
 
       it "should handle multiple calls gracefully", ->
+        $menu.superfish('destroy')
         expect( ->
           $menu.superfish('destroy')
-          $menu.superfish('destroy')
         ).not.toThrow new Error("Uncaught TypeError: Cannot read property 'sfTimer' of null")
+        expect($menu.superfish('destroy')).toBe 'ul'
+
+
+    describe "'show' method", ->
+      it "should fail silently if Superfish is uninitialised", ->
+        $menu.superfish('destroy')
+        expect( $liHasUl.superfish('show') ).toBe 'li'
+      
