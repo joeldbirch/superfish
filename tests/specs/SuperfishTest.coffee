@@ -79,7 +79,15 @@ describe "Superfish", ->
       it "should fail silently if Superfish is uninitialised", ->
         $menu.superfish('destroy')
         expect( $liHasUl.superfish('show') ).toBe 'li'
-  
+
+      it "should cause child ul to be visible", ->
+        $submenu = $liHasUl.children('ul')
+        expect($submenu).toBeHidden()
+        expect($liHasUl).not.toBe '.sfHover'
+        $liHasUl.superfish 'show'
+        expect($submenu).toBeVisible()
+        expect($liHasUl).toBe '.sfHover'
+
 
     describe "'hide' method", ->
       it "should fail silently if Superfish is uninitialised", ->
