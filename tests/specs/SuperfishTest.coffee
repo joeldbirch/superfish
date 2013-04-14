@@ -54,3 +54,13 @@ describe "Superfish", ->
       expect( ->
         $liHasUl.superfish('show')
       ).not.toThrow new Error('Method show does not exist on jQuery.fn.superfish')
+
+
+    describe "'destroy' method", ->
+
+      it "should handle multiple calls gracefully", ->
+        expect( ->
+          $menu.superfish('destroy')
+          $menu.superfish('destroy')
+        ).not.toThrow new Error("Uncaught TypeError: Cannot read property 'sfTimer' of null")
+      
