@@ -21,6 +21,11 @@ describe "Superfish", ->
     expect($menu.data('sf-options')).toBeDefined()
   
   describe "options", ->
+    
+    it "should have default options", ->
+      options = $menu.data('sf-options')
+      expect(options.speed).toMatch 'normal'
+
     it "should allow default options to be overridden", ->
       $menu.superfish 'destroy'
       $menu.superfish
