@@ -93,3 +93,13 @@ describe "Superfish", ->
       it "should fail silently if Superfish is uninitialised", ->
         $menu.superfish('destroy')
         expect( $liHasUl.superfish('hide') ).toBe 'li'
+        
+      it "should cause child ul to be hidden", ->
+        $submenu = $liHasUl.children('ul')
+        $liHasUl.superfish 'show'
+        expect($liHasUl).toBe '.sfHover'
+        expect($submenu).toBeVisible()
+        # do an instant hide for now until I figure out why .toBeHidden fails when animated
+        $liHasUl.superfish 'hide', true
+        expect($submenu).toBeHidden()
+        expect($liHasUl).not.toBe '.sfHover'
