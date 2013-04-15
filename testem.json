@@ -1,0 +1,8 @@
+{
+  "test_page": "tests.html",
+  "src_files": [
+    "tests/specs/*.coffee"
+  ],
+  "before_tests": "coffee -c tests/specs/*.coffee",
+  "on_exit": "rm tests/specs/*Test.js"
+}

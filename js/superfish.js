@@ -1,5 +1,5 @@
 /*
- * Superfish v1.7.0 - jQuery menu widget
+ * Superfish v1.7.1 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -139,8 +139,11 @@
 			hide: function(instant) {
 				if (this.length) {
 					var $this = this,
-						o = getOptions($this),
-						not = (o.retainPath === true) ? o.$path : '',
+						o = getOptions($this);
+						if (!o) {
+							return this;
+						}
+					var not = (o.retainPath === true) ? o.$path : '',
 						$ul = $this.find('li.' + o.hoverClass).add(this).not(not).removeClass(o.hoverClass).children('ul'),
 						speed = o.speedOut;
 
@@ -158,8 +161,11 @@
 				return this;
 			},
 			show: function() {
-				var o = getOptions(this),
-					$this = this.addClass(o.hoverClass),
+				var o = getOptions(this);
+				if (!o) {
+					return this;
+				}
+				var $this = this.addClass(o.hoverClass),
 					$ul = $this.children('ul');
 
 				o.onBeforeShow.call($ul);
@@ -172,8 +178,11 @@
 			destroy: function() {
 				return this.each(function(){
 					var $this = $(this),
-						o = getOptions($this),
+						o = $this.data('sf-options'),
 						$liHasUl = $this.find('li:has(ul)');
+					if (!o) {
+						return false;
+					}
 					clearTimeout(o.sfTimer);
 					toggleMenuClasses($this, o);
 					toggleAnchorClass($liHasUl);
@@ -188,6 +197,7 @@
 					o.$path.removeClass(o.hoverClass + ' ' + c.bcClass).addClass(o.pathClass);
 					$this.find('.' + o.hoverClass).removeClass(o.hoverClass);
 					$this.find('a').removeData('follow');
+					o.onDestroy.call($this);
 					$this.removeData('sf-options');
 				});
 			},
@@ -224,7 +234,7 @@
       return methods.init.apply(this, arguments);
     }
     else {
-      $.error('Method ' +  method + ' does not exist on jQuery.fn.superfish');
+      return $.error('Method ' +  method + ' does not exist on jQuery.fn.superfish');
     }
 	};
 
