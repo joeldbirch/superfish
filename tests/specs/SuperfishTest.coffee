@@ -99,3 +99,13 @@ describe "Superfish", ->
       $liHasUl.superfish('hide', true)
       expect($submenu).toBeHidden()
       expect($liHasUl).not.toBe '.sfHover'
+
+
+  describe "initialisation", ->
+    it "should fail silently if already initialised", ->
+      $menu.superfish('destroy')
+      init_count = 0
+      $.fn.superfish.defaults.onInit = -> init_count++
+      $menu.superfish().superfish()
+      expect(init_count).toEqual 1
+      $.fn.superfish.defaults.onInit = $.noop
