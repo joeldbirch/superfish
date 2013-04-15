@@ -24,3 +24,5 @@ Please use the [existing Superfish documentation](http://users.tpg.com.au/j_birc
 - v1.6: Full CSS refactor for easier customisation. Supports unlimited levels of nested submenus.
 - v1.6: Supersubs plugin replaced by a couple of lines of CSS. The width of each submenu will be determined by its widest child list item. To disable, just remove the `white-space` rule in the main CSS file.
 - Full support for touch devices. Android browsers, iOS Safari, IE9 on Windows Phone 7, Windows 8 IE10 with touchscreen. Touch to open submenus, touch again to follow the link. Be sure to include hoverIntent for widest support.
+
+[![endorse](https://api.coderwall.com/joeldbirch/endorsecount.png)](https://coderwall.com/joeldbirch)
