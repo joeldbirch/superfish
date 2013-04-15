@@ -116,5 +116,10 @@ describe "Superfish", ->
       $menu.superfish
         pathClass: 'current'
       expect($menu.data('sf-options').$path.length).toEqual 1
-      
     
+  describe "pathClass feature", ->
+    it "should show 'current' submenu", ->
+      $menu.superfish('destroy')
+      $menu.superfish
+        pathClass: 'current'
+      expect($liHasUl).toBe '.sfHover'
