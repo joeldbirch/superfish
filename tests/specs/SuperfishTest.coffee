@@ -116,10 +116,24 @@ describe "Superfish", ->
       $menu.superfish
         pathClass: 'current'
       expect($menu.data('sf-options').$path.length).toEqual 1
-    
+
+
   describe "pathClass feature", ->
     it "should show 'current' submenu", ->
       $menu.superfish('destroy')
       $menu.superfish
         pathClass: 'current'
       expect($li_with_sub).toBe '.sfHover'
+
+
+  describe "callbacks", ->
+
+    describe "onDestroy", ->
+      it "should fire", ->
+        destroy_count = 0
+        $menu.superfish('destroy')
+        $menu.superfish
+          onDestroy: -> destroy_count++
+        $menu.superfish('destroy')
+        console.log destroy_count
+        expect(destroy_count).toEqual 1
