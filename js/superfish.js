@@ -10,7 +10,7 @@
 ;(function($) {
 
 	var methods = (function(){
-		//private properties and methods go here
+		// private properties and methods go here
 		var c = {
 				bcClass: 'sf-breadcrumb',
 				menuClass: 'sf-js-enabled',
@@ -136,6 +136,7 @@
 			};
 
 		return {
+			// public methods
 			hide: function(instant) {
 				if (this.length) {
 					var $this = this,
@@ -187,13 +188,13 @@
 					toggleMenuClasses($this, o);
 					toggleAnchorClass($liHasUl);
 					toggleTouchAction($this);
-					// Remove event handlers
+					// remove event handlers
 					$this.off('.superfish').off('.hoverIntent');
-					// Clear animation's inline display style
+					// clear animation's inline display style
 					$liHasUl.children('ul').attr('style', function(i, style){
 						return style.replace(/display[^;]+;?/g, '');
 					});
-					// Reset 'current' path classes
+					// reset 'current' path classes
 					o.$path.removeClass(o.hoverClass + ' ' + c.bcClass).addClass(o.pathClass);
 					$this.find('.' + o.hoverClass).removeClass(o.hoverClass);
 					$this.find('a').removeData('follow');
@@ -228,14 +229,14 @@
 
 	$.fn.superfish = function(method, args) {
 		if (methods[method]) {
-      return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-    }
-    else if (typeof method === 'object' || ! method) {
-      return methods.init.apply(this, arguments);
-    }
-    else {
-      return $.error('Method ' +  method + ' does not exist on jQuery.fn.superfish');
-    }
+			return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
+		}
+		else if (typeof method === 'object' || ! method) {
+			return methods.init.apply(this, arguments);
+		}
+		else {
+			return $.error('Method ' +  method + ' does not exist on jQuery.fn.superfish');
+		}
 	};
 
 	$.fn.superfish.defaults = {
@@ -258,7 +259,7 @@
 		onDestroy: $.noop
 	};
 
-	//soon to be deprecated
+	// soon to be deprecated
 	$.fn.extend({
 		hideSuperfishUl: methods.hide,
 		showSuperfishUl: methods.show
