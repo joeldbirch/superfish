@@ -109,3 +109,12 @@ describe "Superfish", ->
       $menu.superfish().superfish()
       expect(init_count).toEqual 1
       $.fn.superfish.defaults.onInit = $.noop
+
+    it "should be able to store the path to the 'current' menu item (pathClass)", ->
+      expect($menu.data('sf-options').$path.length).toEqual 0
+      $menu.superfish('destroy')
+      $menu.superfish
+        pathClass: 'current'
+      expect($menu.data('sf-options').$path.length).toEqual 1
+      
+    
