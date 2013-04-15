@@ -3,11 +3,11 @@ $ = jQuery
 describe "Superfish", ->
 
   $menu = null
-  $liHasUl = null
+  $li_with_sub = null
 
   beforeEach ->
     $menu = $('ul.sf-menu')
-    $liHasUl = $menu.find('li:has(ul):first')
+    $li_with_sub = $menu.find('li:has(ul):first')
     $menu.superfish()
   
   afterEach ->
@@ -41,10 +41,10 @@ describe "Superfish", ->
   describe "method access", ->
 
     it "'show' method should exist", ->
-      expect($liHasUl.superfish('show')).toBeDefined()
+      expect($li_with_sub.superfish('show')).toBeDefined()
 
     it "'hide' method should exist", ->
-      expect($liHasUl.superfish('hide')).toBeDefined()
+      expect($li_with_sub.superfish('hide')).toBeDefined()
 
     it "'destroy' method should exist", ->
       expect($menu.superfish('destroy')).toBeDefined()
@@ -57,7 +57,7 @@ describe "Superfish", ->
 
     it "should not throw an error when accessing a valid method", ->
       expect( ->
-        $liHasUl.superfish('show')
+        $li_with_sub.superfish('show')
       ).not.toThrow new Error('Method show does not exist on jQuery.fn.superfish')
 
 
@@ -74,31 +74,31 @@ describe "Superfish", ->
   describe "'show' method", ->
     it "should fail silently if Superfish is uninitialised", ->
       $menu.superfish('destroy')
-      expect( $liHasUl.superfish('show') ).toBe 'li'
+      expect( $li_with_sub.superfish('show') ).toBe 'li'
 
     it "should cause child ul to be visible", ->
-      $submenu = $liHasUl.children('ul')
+      $submenu = $li_with_sub.children('ul')
       expect($submenu).toBeHidden()
-      expect($liHasUl).not.toBe '.sfHover'
-      $liHasUl.superfish('show')
+      expect($li_with_sub).not.toBe '.sfHover'
+      $li_with_sub.superfish('show')
       expect($submenu).toBeVisible()
-      expect($liHasUl).toBe '.sfHover'
+      expect($li_with_sub).toBe '.sfHover'
 
 
   describe "'hide' method", ->
     it "should fail silently if Superfish is uninitialised", ->
       $menu.superfish('destroy')
-      expect( $liHasUl.superfish('hide') ).toBe 'li'
+      expect( $li_with_sub.superfish('hide') ).toBe 'li'
       
     it "should cause child ul to be hidden", ->
-      $submenu = $liHasUl.children('ul')
-      $liHasUl.superfish('show')
-      expect($liHasUl).toBe '.sfHover'
+      $submenu = $li_with_sub.children('ul')
+      $li_with_sub.superfish('show')
+      expect($li_with_sub).toBe '.sfHover'
       expect($submenu).toBeVisible()
       # do an instant hide for now until I figure out why .toBeHidden fails when animated
-      $liHasUl.superfish('hide', true)
+      $li_with_sub.superfish('hide', true)
       expect($submenu).toBeHidden()
-      expect($liHasUl).not.toBe '.sfHover'
+      expect($li_with_sub).not.toBe '.sfHover'
 
 
   describe "initialisation", ->
@@ -122,4 +122,4 @@ describe "Superfish", ->
       $menu.superfish('destroy')
       $menu.superfish
         pathClass: 'current'
-      expect($liHasUl).toBe '.sfHover'
+      expect($li_with_sub).toBe '.sfHover'
