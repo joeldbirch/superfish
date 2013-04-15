@@ -197,6 +197,7 @@
 					o.$path.removeClass(o.hoverClass + ' ' + c.bcClass).addClass(o.pathClass);
 					$this.find('.' + o.hoverClass).removeClass(o.hoverClass);
 					$this.find('a').removeData('follow');
+					o.onDestroy.call($this);
 					$this.removeData('sf-options');
 				});
 			},
