@@ -17,6 +17,8 @@ Please use the [existing Superfish documentation](http://users.tpg.com.au/j_birc
 
 ## Recently added features
 
+- v1.7.2: "Fastclicks" for Android browsers and IE10 touch interactions.
+- v1.7.1: Added basic tests (require "Testem" and CoffeeScript to run).
 - v1.7: Full code restructure to use best-practice method access. Use `.superfish('show')` and `.superfish('hide')` instead of deprecated `showSuperfishUl()` and `hideSuperfishUl()` (which will be removed soon).
 - v1.7: Added `destroy` method.
 - v1.7: Replaced `autoArrows` feature with pure CSS arrows for easier customisation and performance (no image http request).

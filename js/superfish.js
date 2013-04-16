@@ -1,5 +1,5 @@
 /*
- * Superfish v1.7.1 - jQuery menu widget
+ * Superfish v1.7.2 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -62,18 +62,30 @@
 						.on('mouseenter.superfish', targets, over)
 						.on('mouseleave.superfish', targets, out);
 				}
-				var touchstart = 'MSPointerDown.superfish';
+				var touchevent = 'MSPointerDown.superfish';
 				if (!ios) {
-					touchstart += ' touchstart.superfish';
+					touchevent += ' touchend.superfish';
 				}
 				if (wp7) {
-					touchstart += ' mousedown.superfish';
+					touchevent += ' mousedown.superfish';
 				}
 				$menu
 					.on('focusin.superfish', 'li', over)
 					.on('focusout.superfish', 'li', out)
-					.on('click.superfish', 'a', o, clickHandler)
-					.on(touchstart, 'a', touchHandler);
+					.on(touchevent, 'a', touchHandler);
+			},
+			touchHandler = function(e) {
+				var $this = $(this),
+					$ul = $this.siblings('ul');
+
+				if ($ul.length > 0 && $ul.is(':hidden')) {
+					$this.one('click.superfish', false);
+					if (e.type === 'MSPointerDown') {
+						$this.trigger('focus');
+					} else {
+						$.proxy(over, $this.parent('li'))();
+					}
+				}
 			},
 			over = function() {
 				var $this = $(this),
@@ -81,7 +93,7 @@
 				clearTimeout(o.sfTimer);
 				$this.siblings().superfish('hide').end().superfish('show');
 			},
-			out = function(e) {
+			out = function() {
 				var $this = $(this),
 					o = getOptions($this);
 				if (ios) {
@@ -103,36 +115,11 @@
 					}
 				}
 			},
-			clickHandler = function(e) {
-				var $a = $(this),
-					o = e.data,
-					$submenu = $a.siblings('ul'),
-					follow = ($a.data('follow') === false) ? false : true;
-
-				if ($submenu.length && !follow) {
-					e.preventDefault();
-					if ($submenu.is(':hidden')) {
-						$.proxy(over, $a.parent('li'))();
-					}
-				}
-			},
 			getMenu = function($el) {
 				return $el.closest('.' + c.menuClass);
 			},
 			getOptions = function($el) {
 				return getMenu($el).data('sf-options');
-			},
-			touchHandler = function(e) {
-				var $this = $(this),
-					$ul = $this.siblings('ul');
-
-				if ($ul.length > 0 && $ul.is(':hidden')) {
-					$this.data('follow', false);
-					if (e.type === 'MSPointerDown') {
-						$this.trigger('focus');
-						return false;
-					}
-				}
 			};
 
 		return {
@@ -172,7 +159,6 @@
 				o.onBeforeShow.call($ul);
 				$ul.stop(true, true).animate(o.animation, o.speed, function() {
 					o.onShow.call($ul);
-					$this.children('a').data('follow', true);
 				});
 				return this;
 			},
@@ -197,7 +183,6 @@
 					// reset 'current' path classes
 					o.$path.removeClass(o.hoverClass + ' ' + c.bcClass).addClass(o.pathClass);
 					$this.find('.' + o.hoverClass).removeClass(o.hoverClass);
-					$this.find('a').removeData('follow');
 					o.onDestroy.call($this);
 					$this.removeData('sf-options');
 				});
