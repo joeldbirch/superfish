@@ -135,5 +135,4 @@ describe "Superfish", ->
         $menu.superfish
           onDestroy: -> destroy_count++
         $menu.superfish('destroy')
-        console.log destroy_count
         expect(destroy_count).toEqual 1
