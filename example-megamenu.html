@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>jQuery Superfish megamenu example with full touch support for Android, iOS and Windows 8.</title>
+    <link rel="stylesheet" href="css/megafish.css" media="screen">
+    <style>
+      html, body, .wrap {
+        width: 50em;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .wrap {
+        padding: 1em;
+        height: auto;
+        min-height: 90%;
+      }
+      h1 {
+        font-size: 1.125em;
+      }
+      .sf-mega ul {
+        list-style-type: auto;
+        margin: 0;
+        padding-left: 1.2em;
+      }
+      .sf-mega li {
+        margin-left: 0;
+      }
+      .sf-mega h2 {
+        font-size: 1em;
+        margin: .5em 0;
+        color: #13a;
+      }
+      a:focus, a:hover, a:active {
+        text-decoration: none;
+      }
+    </style>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/hoverIntent.js"></script>
+    <script src="js/superfish.js"></script>
+    <script>
+
+    (function($){ //create closure so we can safely use $ as alias for jQuery
+
+      $(document).ready(function(){
+        
+        var exampleOptions = {
+          speed: 'fast'
+        }
+        // initialise plugin
+        var example = $('#example').superfish(exampleOptions);
+
+        // buttons to demonstrate Superfish's public methods
+        $('.destroy').on('click', function(){
+          example.superfish('destroy');
+        });
+
+        $('.init').on('click', function(){
+          example.superfish(exampleOptions);
+        });
+
+        $('.open').on('click', function(){
+          example.children('li:first').superfish('show');
+        });
+
+        $('.close').on('click', function(){
+          example.children('li:first').superfish('hide');
+        });
+      });
+
+    })(jQuery);
+
+
+    </script>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Superfish Megamenu Example</h1>
+      <button class="open">Open first submenu</button>
+      <button class="close">Close first submenu</button>
+      <button class="destroy">Destroy Superfish</button>
+      <button class="init">Restore Superfish</button>
+      <br>
+      <br>
+      <ul class="sf-menu" id="example">
+        <li class="current">
+          <a href="followed.html">menu item 1</a>
+          <div class="sf-mega">
+            <h2>Arbitrary stuff here. Here's a random unstyled table for example:</h2>
+            <div class="neat tabular"><table cellspacing="0"><thead><tr><th scope="col">Year level</th><th scope="col">Tuition fee per term</th><th scope="col">Composite fee per term</th><th scope="col">Total per term</th><th scope="col">Total annual charges</th></tr></thead><tbody><tr><td>ELC – 2 days</td><td>$1,700</td><td>$57</td><td>$1,757</td><td>$7,028</td></tr><tr><td>ELC – 3 days</td><td>$2,390</td><td>$79</td><td>$2,469</td><td>$9,876</td></tr><tr><td>ELC - 4 days</td><td>$3,095</td><td>$104</td><td>$3,199</td><td>$12,796</td></tr><tr><td>ELC/Pre-Prep</td><td>$3,865</td><td>$122</td><td>$3,987</td><td>$15,948</td></tr><tr><td>Prep</td><td>$3,300</td><td>$128</td><td>$3,428</td><td>$13,712</td></tr><tr><td>Year 1</td><td>$3,585</td><td>$128</td><td>$3,713</td><td>$14,852</td></tr><tr><td>Year 2</td><td>$3,950</td><td>$128</td><td>$4,078</td><td>$16,312</td></tr><tr><td>Year 3</td><td>$3,950</td><td>$275</td><td>$4,225</td><td>$16,900</td></tr><tr><td>Year 4</td><td>$4,420</td><td>$275</td><td>$4,695</td><td>$18,780</td></tr><tr><td>Year 5</td><td>$4,495</td><td>$309</td><td>$4,804</td><td>$19,216</td></tr><tr><td>Year 6</td><td>$4,495</td><td>$449</td><td>$4,944</td><td>$19,776</td></tr><tr><td>Year 7</td><td>$5,147</td><td>$393</td><td>$5,540</td><td>$22,160</td></tr><tr><td>Year 8</td><td>$5,147</td><td>$508</td><td>$5,655</td><td>$22,620</td></tr><tr><td>Year 9</td><td>$5,650</td><td>$552</td><td>$6,202</td><td>$24,808</td></tr></tbody></table></div>
+          </div>
+        </li>
+        <li>
+          <a href="followed.html">menu item 2</a>
+        </li>
+        <li>
+          <a href="followed.html">menu item 3</a>
+          <div class="sf-mega">
+            <div class="sf-mega-section">
+              <h2>list heading:</h2>
+              <ul>
+                <li class="current"><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+              </ul>
+            </div>
+
+            <div class="sf-mega-section">
+              <h2>list heading:</h2>
+              <ul>
+                <li class="current"><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item that is longer</a></li>
+                <li><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+              </ul>
+            </div>
+
+            <div class="sf-mega-section">
+              <h2>list heading:</h2>
+              <ul>
+                <li class="current"><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+              </ul>
+            </div>
+
+            <div class="sf-mega-section">
+              <h2>list heading:</h2>
+              <ul>
+                <li class="current"><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+                <li><a href="followed.html">menu item</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="followed.html">menu item 4</a>
+        </li> 
+      </ul>
+      <p style="clear:both;">Morbi pulvinar ornare mauris. Vivamus ut ipsum. Fusce vitae pede. Etiam sodales, libero vitae ultricies vestibulum, elit eros aliquam pede, auctor lobortis enim ligula non nibh. Quisque molestie, nibh ac malesuada ultricies, metus urna adipiscing dui, tincidunt fermentum lectus velit ac ipsum. Curabitur ultrices ipsum et tortor. Nullam non felis ornare sem laoreet viverra.</p>
+      <p>Nunc turpis ligula, auctor ut, iaculis porta, consequat vel, turpis. Suspendisse sed diam. In scelerisque condimentum tellus. Vivamus et velit a ante consectetuer tempor. Nunc vitae mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Suspendisse lacinia, lacus a posuere molestie, tellus diam ullamcorper est, in mattis elit nisi nec odio. Aliquam a sem sit amet dolor viverra ornare. Curabitur elit velit, tempus vel, tempus at, ultricies non, arcu. Duis viverra tempus tellus. Duis dignissim convallis tortor. Phasellus nisl.</p>
+      <p>Morbi pulvinar ornare mauris. Vivamus ut ipsum. Fusce vitae pede. Etiam sodales, libero vitae ultricies vestibulum, elit eros aliquam pede, auctor lobortis enim ligula non nibh. Quisque molestie, nibh ac malesuada ultricies, metus urna adipiscing dui, tincidunt fermentum lectus velit ac ipsum. Curabitur ultrices ipsum et tortor. Nullam non felis ornare sem laoreet viverra.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborun.</p>
+    </div>
+  </body>
+</html>
