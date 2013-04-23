@@ -18,18 +18,19 @@
 				anchorClass: 'sf-with-ul',
 				menuArrowClass: 'sf-arrows'
 			},
-			ios = /iPhone|iPad|iPod/i.test(navigator.userAgent),
-			wp7 = (function() {
-				var style = document.documentElement.style;
-				return ('behavior' in style && 'fill' in style && /iemobile/i.test(navigator.userAgent));
-			})(),
-			fixIos = (function(){
+			ios = (function(){
+				var ios = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 				if (ios) {
 					// iOS clicks only bubble as far as body children
 					$(window).load(function() {
 						$('body').children().on('click', $.noop);
 					});
 				}
+				return ios;
+			})(),
+			wp7 = (function() {
+				var style = document.documentElement.style;
+				return ('behavior' in style && 'fill' in style && /iemobile/i.test(navigator.userAgent));
 			})(),
 			toggleMenuClasses = function($menu, o) {
 				var classes = c.menuClass;
