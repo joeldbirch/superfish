@@ -8,6 +8,7 @@
  */
 
 ;(function($) {
+	"use strict";
 
 	var methods = (function(){
 		// private properties and methods go here
