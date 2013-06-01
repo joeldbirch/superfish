@@ -1,0 +1,20 @@
+{
+  "name": "superfish",
+  "main": [
+  	"js/superfish.js",
+  	"js/hoverIntent.js",
+  	"css/superfish.css"
+  ],
+  "ignore": [
+    "**/.*",
+    "*.json",
+    "node_modules",
+    "components",
+    "README.md",
+    "tests.html",
+    "tests"
+  ],
+  "dependencies": {
+  	"jquery": "~1.8"
+  }
+}
