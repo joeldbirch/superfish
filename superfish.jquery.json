@@ -8,7 +8,7 @@
         "responsive",
         "navigation"
     ],
-    "version": "1.7.2",
+    "version": "1.7.3",
     "author": {
         "name": "Joel Birch"
     },
@@ -22,6 +22,6 @@
     "homepage": "http://users.tpg.com.au/j_birch/plugins/superfish/",
     "docs": "http://users.tpg.com.au/j_birch/plugins/superfish/",
     "dependencies": {
-        "jquery": ">=1.7"
+        "jquery": ">=1.8"
     }
 }

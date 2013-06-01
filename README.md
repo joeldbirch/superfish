@@ -17,6 +17,7 @@ Please use the [existing Superfish documentation](http://users.tpg.com.au/j_birc
 
 ## Recently added features
 
+- v1.7.3: You can now use Superfish to create mega-menus. CSS file and example page included. Regardless of whether mega-menus are evil, at least now they'll be touch-compatible.
 - v1.7.2: "Fastclicks" for Android browsers and IE10 touch interactions.
 - v1.7.1: Added basic tests (require "Testem" and CoffeeScript to run).
 - v1.7: Full code restructure to use best-practice method access. Use `.superfish('show')` and `.superfish('hide')` instead of deprecated `showSuperfishUl()` and `hideSuperfishUl()` (which will be removed soon).
@@ -26,5 +27,3 @@ Please use the [existing Superfish documentation](http://users.tpg.com.au/j_birc
 - v1.6: Full CSS refactor for easier customisation. Supports unlimited levels of nested submenus.
 - v1.6: Supersubs plugin replaced by a couple of lines of CSS. The width of each submenu will be determined by its widest child list item. To disable, just remove the `white-space` rule in the main CSS file.
 - Full support for touch devices. Android browsers, iOS Safari, IE9 on Windows Phone 7, Windows 8 IE10 with touchscreen. Touch to open submenus, touch again to follow the link. Be sure to include hoverIntent for widest support.
-
-[![endorse](https://api.coderwall.com/joeldbirch/endorsecount.png)](https://coderwall.com/joeldbirch)
