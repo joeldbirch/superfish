@@ -1,5 +1,6 @@
 {
   "name": "superfish",
+  "version": "1.7.3",
   "main": [
   	"js/superfish.js",
   	"js/hoverIntent.js",
