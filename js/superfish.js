@@ -43,7 +43,7 @@
 				return $menu.find('li.' + o.pathClass).slice(0, o.pathLevels)
 					.addClass(o.hoverClass + ' ' + c.bcClass)
 						.filter(function() {
-							return ($(this).children('ul').hide().show().length);
+							return ($(this).children(o.popUpSelector).hide().show().length);
 						}).removeClass(o.pathClass);
 			},
 			toggleAnchorClass = function($li) {
@@ -55,7 +55,7 @@
 				$menu.css('ms-touch-action', touchAction);
 			},
 			applyHandlers = function($menu,o) {
-				var targets = 'li:has(ul)';
+				var targets = 'li:has(' + o.popUpSelector + ')';
 				if ($.fn.hoverIntent && !o.disableHI) {
 					$menu.hoverIntent(over, out, targets);
 				}
@@ -74,11 +74,11 @@
 				$menu
 					.on('focusin.superfish', 'li', over)
 					.on('focusout.superfish', 'li', out)
-					.on(touchevent, 'a', touchHandler);
+					.on(touchevent, 'a', o, touchHandler);
 			},
 			touchHandler = function(e) {
 				var $this = $(this),
-					$ul = $this.siblings('ul');
+					$ul = $this.siblings(e.data.popUpSelector);
 
 				if ($ul.length > 0 && $ul.is(':hidden')) {
 					$this.one('click.superfish', false);
@@ -134,7 +134,7 @@
 							return this;
 						}
 					var not = (o.retainPath === true) ? o.$path : '',
-						$ul = $this.find('li.' + o.hoverClass).add(this).not(not).removeClass(o.hoverClass).children('ul'),
+						$ul = $this.find('li.' + o.hoverClass).add(this).not(not).removeClass(o.hoverClass).children(o.popUpSelector),
 						speed = o.speedOut;
 
 					if (instant) {
@@ -156,7 +156,7 @@
 					return this;
 				}
 				var $this = this.addClass(o.hoverClass),
-					$ul = $this.children('ul');
+					$ul = $this.children(o.popUpSelector);
 
 				o.onBeforeShow.call($ul);
 				$ul.stop(true, true).animate(o.animation, o.speed, function() {
@@ -168,18 +168,19 @@
 				return this.each(function(){
 					var $this = $(this),
 						o = $this.data('sf-options'),
-						$liHasUl = $this.find('li:has(ul)');
+						$hasPopUp;
 					if (!o) {
 						return false;
 					}
+					$hasPopUp = $this.find(o.popUpSelector).parent('li');
 					clearTimeout(o.sfTimer);
 					toggleMenuClasses($this, o);
-					toggleAnchorClass($liHasUl);
+					toggleAnchorClass($hasPopUp);
 					toggleTouchAction($this);
 					// remove event handlers
 					$this.off('.superfish').off('.hoverIntent');
 					// clear animation's inline display style
-					$liHasUl.children('ul').attr('style', function(i, style){
+					$hasPopUp.children(o.popUpSelector).attr('style', function(i, style){
 						return style.replace(/display[^;]+;?/g, '');
 					});
 					// reset 'current' path classes
@@ -196,17 +197,17 @@
 						return false;
 					}
 					var o = $.extend({}, $.fn.superfish.defaults, op),
-						$liHasUl = $this.find('li:has(ul)');
+						$hasPopUp = $this.find(o.popUpSelector).parent('li');
 					o.$path = setPathToCurrent($this, o);
 
 					$this.data('sf-options', o);
 
 					toggleMenuClasses($this, o);
-					toggleAnchorClass($liHasUl);
+					toggleAnchorClass($hasPopUp);
 					toggleTouchAction($this);
 					applyHandlers($this, o);
 
-					$liHasUl.not('.' + c.bcClass).superfish('hide',true);
+					$hasPopUp.not('.' + c.bcClass).superfish('hide',true);
 
 					o.onInit.call(this);
 				});
@@ -227,6 +228,7 @@
 	};
 
 	$.fn.superfish.defaults = {
+		popUpSelector: 'ul,.sf-mega', // within menu context
 		hoverClass: 'sfHover',
 		pathClass: 'overrideThisToUse',
 		pathLevels: 1,
