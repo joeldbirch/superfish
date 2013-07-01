@@ -1,19 +1,21 @@
 {
   "name": "superfish",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "main": [
-  	"js/superfish.js",
-  	"js/hoverIntent.js",
-  	"css/superfish.css"
+  	"dist/js/superfish.js",
+  	"dist/js/hoverIntent.js",
+  	"dist/css/superfish.css"
   ],
   "ignore": [
     "**/.*",
     "*.json",
+    "Gruntfile.coffee",
+    "changelog.txt",
     "node_modules",
     "components",
     "README.md",
-    "tests.html",
-    "tests"
+    "test",
+    "src"
   ],
   "dependencies": {
   	"jquery": "~1.8"

@@ -1,48 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>jQuery Superfish dropdown menu example with full touch support for Android, iOS and Windows 8.</title>
-		<link rel="stylesheet" href="css/superfish.css" media="screen">
-		<style> body { max-width: 40em; } </style>
-		<script src="js/jquery-1.9.1.min.js"></script>
-		<script src="js/hoverIntent.js"></script>
-		<script src="js/superfish.js"></script>
-		<script>
+<html>
+<head>
+	<title>Jasmine Spec Runner</title>
 
-		(function($){ //create closure so we can safely use $ as alias for jQuery
+	<% css.forEach(function(style){ %>
+	<link rel="stylesheet" href="<%= style %>">
+	<% }) %>
 
-			$(document).ready(function(){
+	<style>
+		.jasmine_reporter {
+			clear: both;
+		}
+	</style>
 
-				// initialise plugin
-				var example = $('#example').superfish({
-					//add options here if required
-				});
+	<% with (scripts) { %>
+	<% [].concat(jasmine, vendor, helpers, src, specs, reporters, start).forEach(function(script){ %>
+	<script src="<%= script %>"></script>
+	<% }) %>
+	<% }; %>
 
-				// buttons to demonstrate Superfish's public methods
-				$('.destroy').on('click', function(){
-					example.superfish('destroy');
-				});
+</head>
 
-				$('.init').on('click', function(){
-					example.superfish();
-				});
+<body>
+	<div id="jasmine_content">
 
-				$('.open').on('click', function(){
-					example.children('li:first').superfish('show');
-				});
-
-				$('.close').on('click', function(){
-					example.children('li:first').superfish('hide');
-				});
-			});
-
-		})(jQuery);
-
-
-		</script>
-	</head>
-	<body>
 		<ul class="sf-menu" id="example">
 			<li class="current">
 				<a href="followed.html">menu item 1</a>
@@ -142,13 +123,9 @@
 			</li>
 			<li>
 				<a href="followed.html">menu item 4</a>
-			</li>	
+			</li> 
 		</ul>
-		<p style="clear:both;">Morbi pulvinar ornare mauris. Vivamus ut ipsum. Fusce vitae pede. Etiam sodales, libero vitae ultricies vestibulum, elit eros aliquam pede, auctor lobortis enim ligula non nibh. Quisque molestie, nibh ac malesuada ultricies, metus urna adipiscing dui, tincidunt fermentum lectus velit ac ipsum. Curabitur ultrices ipsum et tortor. Nullam non felis ornare sem laoreet viverra.</p>
-		<p>Nunc turpis ligula, auctor ut, iaculis porta, consequat vel, turpis. Suspendisse sed diam. In scelerisque condimentum tellus. Vivamus et velit a ante consectetuer tempor. Nunc vitae mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Suspendisse lacinia, lacus a posuere molestie, tellus diam ullamcorper est, in mattis elit nisi nec odio. Aliquam a sem sit amet dolor viverra ornare. Curabitur elit velit, tempus vel, tempus at, ultricies non, arcu. Duis viverra tempus tellus. Duis dignissim convallis tortor. Phasellus nisl.</p>
-		<button class="open">Open first submenu</button>
-		<button class="close">Close first submenu</button>
-		<button class="destroy">Destroy Superfish</button>
-		<button class="init">Restore Superfish</button>
-	</body>
+		
+	</div>
+</body>
 </html>

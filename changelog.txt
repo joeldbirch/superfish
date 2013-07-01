@@ -132,3 +132,5 @@ v1.7.1 		Added missing onDestroy hook. Added tests. Handle multiple method calls
 v1.7.2 		Simplify by removing click handler and 'follow' flags (possible due to removal of useClick feature). Use touch handler with '.one()' click handler to cancel link follows instead. Android browsers and IE10 now have 'fastclicks'. Sadly, iOS proved too buggy with touch event (nearby menu items sometimes highlighted on touch); relying on Apple's :hover hack instead (no fastclicks).
 
 v1.7.3 		Alter JS to allow mega-menus. Provide mega-menu CSS and example page. Added bower.json. Resolve some jsHint issues.
+
+v1.7.4		Set up Grunt. Tests no longer use Testem and can be run in a headless browser by running 'grunt test' from within the main project folder. Minor code alterations to suit jshint. Update jquery file to v1.10.1. Added minified version of Superfish.js. Reorganise files and folders. Alter bower.json.
