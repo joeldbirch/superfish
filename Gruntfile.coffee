@@ -58,9 +58,12 @@ module.exports = (grunt) ->
 
 
 		watch:
-			src:
+			js:
 				files: '<%= jshint.src.src %>'
 				tasks: ['jshint:src']
+			style:
+				files: 'src/**/*.css'
+				tasks: ['copy']
 
 
 		coffee:
