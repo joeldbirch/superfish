@@ -93,7 +93,16 @@
 				var $this = $(this),
 					o = getOptions($this);
 				clearTimeout(o.sfTimer);
-				$this.siblings().superfish('hide').end().superfish('show');
+				if (ios) {
+					$.proxy(function() {
+						$this.siblings().superfish('hide').end().superfish('show');
+					}, $this);
+				}
+				else {
+					o.sfTimer = setTimeout($.proxy(function() {
+						$this.siblings().superfish('hide').end().superfish('show');
+					}, $this), o.overDelay);
+				}
 			},
 			out = function () {
 				var $this = $(this),
@@ -233,6 +242,7 @@
 		pathClass: 'overrideThisToUse',
 		pathLevels: 1,
 		delay: 800,
+		overDelay: 0,
 		animation: {opacity: 'show'},
 		animationOut: {opacity: 'hide'},
 		speed: 'normal',
