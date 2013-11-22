@@ -142,7 +142,11 @@
 						speed = 0;
 					}
 					o.retainPath = false;
-					o.onBeforeHide.call($ul);
+
+					if (o.onBeforeHide.call($ul) === false) {
+						return this;
+					}
+
 					$ul.stop(true, true).animate(o.animationOut, speed, function () {
 						var $this = $(this);
 						o.onHide.call($this);
@@ -158,7 +162,10 @@
 				var $this = this.addClass(o.hoverClass),
 					$ul = $this.children(o.popUpSelector);
 
-				o.onBeforeShow.call($ul);
+				if (o.onBeforeShow.call($ul) === false) {
+					return this;
+				}
+
 				$ul.stop(true, true).animate(o.animation, o.speed, function () {
 					o.onShow.call($ul);
 				});
