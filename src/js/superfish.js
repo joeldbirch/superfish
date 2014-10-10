@@ -259,10 +259,4 @@
 		onDestroy: $.noop
 	};
 
-	// soon to be deprecated
-	$.fn.extend({
-		hideSuperfishUl: methods.hide,
-		showSuperfishUl: methods.show
-	});
-
 })(jQuery, window);

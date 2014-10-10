@@ -25,7 +25,7 @@
 			// support metadata
 			var o = $.meta ? $.extend({}, opts, $$.data()) : opts;
 			// cache all ul elements and show them in preparation for measurements
-			$ULs = $$.find('ul').show();
+			var $ULs = $$.find('ul').show();
 			// get the font size of menu.
 			// .css('fontSize') returns various results cross-browser, so measure an em dash instead
 			var fontsize = $('<li id="menu-fontsize">&#8212;</li>').css({

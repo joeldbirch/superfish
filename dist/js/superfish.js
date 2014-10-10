@@ -1,5 +1,5 @@
 /*
- * jQuery Superfish Menu Plugin - v1.7.4
+ * jQuery Superfish Menu Plugin - v1.7.5
  * Copyright (c) 2014 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -258,11 +258,5 @@
 		onIdle: $.noop,
 		onDestroy: $.noop
 	};
-
-	// soon to be deprecated
-	$.fn.extend({
-		hideSuperfishUl: methods.hide,
-		showSuperfishUl: methods.show
-	});
 
 })(jQuery, window);
