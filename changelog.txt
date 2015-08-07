@@ -135,4 +135,6 @@ v1.7.3 		Alter JS to allow mega-menus. Provide mega-menu CSS and example page. A
 
 v1.7.4		Set up Grunt. Tests no longer use Testem and can be run in a headless browser by running 'grunt test' from within the main project folder. Minor code alterations to suit jshint. Update jquery file to v1.10.1. Added minified version of Superfish.js. Reorganise files and folders. Alter bower.json.
 
-v1.7.5 In IE11 MS vendor prefix versions of the Pointer Events APIs have been deprecated in favor of the non-prefixed. Added support and backwards compatibility. Reportedly fixes touch interaction issues for Windows 8 with IE11 (closes issue #121). Removed deprecated method access (eg. hideSuperfishUl, showSuperfishUl).
+v1.7.5		In IE11 MS vendor prefix versions of the Pointer Events APIs have been deprecated in favor of the non-prefixed. Added support and backwards compatibility. Reportedly fixes touch interaction issues for Windows 8 with IE11 (closes issue #121). Removed deprecated method access (eg. hideSuperfishUl, showSuperfishUl).
+
+v1.7.6		Let default touch functionality be extended or disabled (closes #105) and onBeforeShow and onBeforeHide prevent show/hide (closes #106). Increment version to force Bower to apply jQuery dependancy update (closes #130). Make package.json compatible with npm.

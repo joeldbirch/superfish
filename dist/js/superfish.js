@@ -1,6 +1,6 @@
 /*
- * jQuery Superfish Menu Plugin - v1.7.5
- * Copyright (c) 2014 Joel Birch
+ * jQuery Superfish Menu Plugin - v1.7.6
+ * Copyright (c) 2015 
  *
  * Dual licensed under the MIT and GPL licenses:
  *	http://www.opensource.org/licenses/mit-license.php
@@ -89,7 +89,12 @@
 			},
 			touchHandler = function (e) {
 				var $this = $(this),
+					o = getOptions($this),
 					$ul = $this.siblings(e.data.popUpSelector);
+
+				if (o.onHandleTouch.call($ul) === false) {
+					return this;
+				}
 
 				if ($ul.length > 0 && $ul.is(':hidden')) {
 					$this.one('click.superfish', false);
@@ -153,7 +158,11 @@
 						speed = 0;
 					}
 					o.retainPath = false;
-					o.onBeforeHide.call($ul);
+
+					if (o.onBeforeHide.call($ul) === false) {
+						return this;
+					}
+
 					$ul.stop(true, true).animate(o.animationOut, speed, function () {
 						var $this = $(this);
 						o.onHide.call($this);
@@ -169,7 +178,10 @@
 				var $this = this.addClass(o.hoverClass),
 					$ul = $this.children(o.popUpSelector);
 
-				o.onBeforeShow.call($ul);
+				if (o.onBeforeShow.call($ul) === false) {
+					return this;
+				}
+
 				$ul.stop(true, true).animate(o.animation, o.speed, function () {
 					o.onShow.call($ul);
 				});
@@ -256,7 +268,8 @@
 		onBeforeHide: $.noop,
 		onHide: $.noop,
 		onIdle: $.noop,
-		onDestroy: $.noop
+		onDestroy: $.noop,
+		onHandleTouch: $.noop
 	};
 
 })(jQuery, window);

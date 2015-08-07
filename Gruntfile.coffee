@@ -3,7 +3,7 @@ module.exports = (grunt) ->
 	# Project configuration.
 	grunt.initConfig
 
-		pkg: grunt.file.readJSON('superfish.jquery.json')
+		pkg: grunt.file.readJSON('package.json')
 		banner: """
 						/*
 						 * <%= pkg.title || pkg.name %> - v<%= pkg.version %>
