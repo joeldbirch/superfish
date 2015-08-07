@@ -1,6 +1,25 @@
 {
-  "name": "jquery-plugin",
-  "version": "0.0.0-ignored",
+  "name": "superfish",
+  "title": "jQuery Superfish Menu Plugin",
+  "description": "Superfish is a jQuery plugin that adds usability enhancements to multi-level drop-down menus. Fully supports touch devices and keyboard interaction.",
+  "version": "1.7.6",
+  "keywords": [
+    "menu",
+    "dropdown",
+    "responsive",
+    "navigation",
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "author": "Joel Birch",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joeldbirch/superfish.git"
+  },
+  "bugs": "https://github.com/joeldbirch/superfish/issues",
+  "homepage": "http://users.tpg.com.au/j_birch/plugins/superfish/",
+  "docs": "http://users.tpg.com.au/j_birch/plugins/superfish/",
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -14,5 +33,8 @@
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-jasmine": "~0.5.1",
     "grunt-contrib-coffee": "~0.7.0"
+  },
+  "dependencies": {
+    "jquery": ">=1.8"
   }
 }
