@@ -89,7 +89,12 @@
 			},
 			touchHandler = function (e) {
 				var $this = $(this),
+					o = getOptions($this),
 					$ul = $this.siblings(e.data.popUpSelector);
+
+				if (o.onHandleTouch.call($ul) === false) {
+					return this;
+				}
 
 				if ($ul.length > 0 && $ul.is(':hidden')) {
 					$this.one('click.superfish', false);
@@ -256,7 +261,8 @@
 		onBeforeHide: $.noop,
 		onHide: $.noop,
 		onIdle: $.noop,
-		onDestroy: $.noop
+		onDestroy: $.noop,
+		onHandleTouch: $.noop
 	};
 
 })(jQuery, window);
