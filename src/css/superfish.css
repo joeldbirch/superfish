@@ -22,7 +22,7 @@
 	display: block;
 }
 
-.sf-menu a {
+.sf-menu a, .sf-menu span {
 	display: block;
 	position: relative;
 }
@@ -42,7 +42,7 @@
 	min-width: 12em; /* allow long menu items to determine submenu width */
 	*width: 12em; /* no auto sub width for IE7, see white-space comment below */
 }
-.sf-menu a {
+.sf-menu a, .sf-menu span {
 	border-left: 1px solid #fff;
 	border-top: 1px solid #dFeEFF; /* fallback colour must use full shorthand */
 	border-top: 1px solid rgba(255,255,255,.5);
@@ -50,8 +50,11 @@
 	text-decoration: none;
 	zoom: 1; /* IE7 */
 }
-.sf-menu a {
+.sf-menu a, .sf-menu span {
 	color: #13a;
+}
+.sf-menu span {
+	cursor: default;
 }
 .sf-menu li {
 	background: #BDD2FF;
