@@ -50,7 +50,7 @@
 						}).removeClass(o.pathClass);
 			},
 			toggleAnchorClass = function ($li) {
-				$li.children('a').toggleClass(c.anchorClass);
+				$li.children('a, span').toggleClass(c.anchorClass);
 			},
 			toggleTouchAction = function ($menu) {
 				var msTouchAction = $menu.css('ms-touch-action');
