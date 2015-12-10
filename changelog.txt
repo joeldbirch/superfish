@@ -138,3 +138,5 @@ v1.7.4		Set up Grunt. Tests no longer use Testem and can be run in a headless br
 v1.7.5		In IE11 MS vendor prefix versions of the Pointer Events APIs have been deprecated in favor of the non-prefixed. Added support and backwards compatibility. Reportedly fixes touch interaction issues for Windows 8 with IE11 (closes issue #121). Removed deprecated method access (eg. hideSuperfishUl, showSuperfishUl).
 
 v1.7.6		Let default touch functionality be extended or disabled (closes #105) and onBeforeShow and onBeforeHide prevent show/hide (closes #106). Increment version to force Bower to apply jQuery dependancy update (closes #130). Make package.json compatible with npm.
+
+v1.7.7		Exclude Windows Phone from iOS detection regular expression, closes #147. Better way to cause taps elsewhere on the page to close submenus on iOS.
