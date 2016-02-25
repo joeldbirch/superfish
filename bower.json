@@ -6,6 +6,7 @@
   	"dist/js/hoverIntent.js",
   	"dist/css/superfish.css"
   ],
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "*.json",
