@@ -18,7 +18,7 @@ describe "Superfish", ->
 
   it "should be chainable", ->
     $menu.superfish('destroy')
-    expect($menu.superfish()).toBe 'ul'
+    expect($menu.superfish()).toBeMatchedBy 'ul'
 
   it "should store options", ->
     expect($menu.data('sf-options') ).toBeDefined()
@@ -68,37 +68,37 @@ describe "Superfish", ->
       expect( ->
         $menu.superfish('destroy')
       ).not.toThrow new Error("Uncaught TypeError: Cannot read property 'sfTimer' of null")
-      expect($menu.superfish('destroy')).toBe 'ul'
+      expect($menu.superfish('destroy')).toBeMatchedBy 'ul'
 
 
   describe "'show' method", ->
     it "should fail silently if Superfish is uninitialised", ->
       $menu.superfish('destroy')
-      expect( $li_with_sub.superfish('show') ).toBe 'li'
+      expect( $li_with_sub.superfish('show') ).toBeMatchedBy 'li'
 
     it "should cause child ul to be visible", ->
       $submenu = $li_with_sub.children('ul')
       expect($submenu).toBeHidden()
-      expect($li_with_sub).not.toBe '.sfHover'
+      expect($li_with_sub).not.toBeMatchedBy '.sfHover'
       $li_with_sub.superfish('show')
       expect($submenu).toBeVisible()
-      expect($li_with_sub).toBe '.sfHover'
+      expect($li_with_sub).toBeMatchedBy '.sfHover'
 
 
   describe "'hide' method", ->
     it "should fail silently if Superfish is uninitialised", ->
       $menu.superfish('destroy')
-      expect( $li_with_sub.superfish('hide') ).toBe 'li'
+      expect( $li_with_sub.superfish('hide') ).toBeMatchedBy 'li'
       
     it "should cause child ul to be hidden", ->
       $submenu = $li_with_sub.children('ul')
       $li_with_sub.superfish('show')
-      expect($li_with_sub).toBe '.sfHover'
+      expect($li_with_sub).toBeMatchedBy '.sfHover'
       expect($submenu).toBeVisible()
       # do an instant hide for now until I figure out why .toBeHidden fails when animated
       $li_with_sub.superfish('hide', true)
       expect($submenu).toBeHidden()
-      expect($li_with_sub).not.toBe '.sfHover'
+      expect($li_with_sub).not.toBeMatchedBy '.sfHover'
 
 
   describe "initialisation", ->
@@ -123,7 +123,7 @@ describe "Superfish", ->
       $menu.superfish('destroy')
       $menu.superfish
         pathClass: 'current'
-      expect($li_with_sub).toBe '.sfHover'
+      expect($li_with_sub).toBeMatchedBy '.sfHover'
 
 
   describe "callbacks", ->
