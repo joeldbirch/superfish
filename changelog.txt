@@ -140,3 +140,5 @@ v1.7.5		In IE11 MS vendor prefix versions of the Pointer Events APIs have been d
 v1.7.6		Let default touch functionality be extended or disabled (closes #105) and onBeforeShow and onBeforeHide prevent show/hide (closes #106). Increment version to force Bower to apply jQuery dependancy update (closes #130). Make package.json compatible with npm.
 
 v1.7.7		Exclude Windows Phone from iOS detection regular expression, closes #147. Better way to cause taps elsewhere on the page to close submenus on iOS.
+
+v1.7.8		Add 'main' field to package.json to make the plugin easier to 'require' for browserify users. Update all dev packages. Update specs and fixtures to work with updated Jasmine package. Shuffle Superfish methods around to appease latest JShint requirements that functions are defined prior to calling them.
