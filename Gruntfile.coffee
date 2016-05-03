@@ -7,7 +7,7 @@ module.exports = (grunt) ->
 		banner: """
 						/*
 						 * <%= pkg.title || pkg.name %> - v<%= pkg.version %>
-						 * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>
+						 * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %>
 						 *
 						 * Dual licensed under the MIT and GPL licenses:
 						 *	http://www.opensource.org/licenses/mit-license.php
