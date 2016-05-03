@@ -115,7 +115,13 @@
 			applyHandlers = function ($menu, o) {
 				var targets = 'li:has(' + o.popUpSelector + ')';
 				if ($.fn.hoverIntent && !o.disableHI) {
-					$menu.hoverIntent(over, out, targets);
+					$menu.hoverIntent({
+						over: over,
+						out: out,
+						selector: targets,
+						timeout: o.delay
+					});
+					o.delay = 0;
 				}
 				else {
 					$menu
