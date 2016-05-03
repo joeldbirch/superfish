@@ -142,3 +142,5 @@ v1.7.6		Let default touch functionality be extended or disabled (closes #105) an
 v1.7.7		Exclude Windows Phone from iOS detection regular expression, closes #147. Better way to cause taps elsewhere on the page to close submenus on iOS.
 
 v1.7.8		Add 'main' field to package.json to make the plugin easier to 'require' for browserify users. Update all dev packages. Update specs and fixtures to work with updated Jasmine package. Shuffle Superfish methods around to appease latest JShint requirements that functions are defined prior to calling them. Update supplied jQuery version to 1.12.1.
+
+v1.7.9		Use camel-casing for data attribute. Fixes #155. Don't rely on toggleClass. Prevents confusion when classes already exist in markup. Closes #154. Add test to ensure markup classes are not removed on init. Update supplied jQuery version to 1.12.3.
