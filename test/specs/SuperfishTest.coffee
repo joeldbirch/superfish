@@ -21,20 +21,20 @@ describe "Superfish", ->
     expect($menu.superfish()).toBeMatchedBy 'ul'
 
   it "should store options", ->
-    expect($menu.data('sf-options') ).toBeDefined()
+    expect($menu.data('sfOptions') ).toBeDefined()
 
 
   describe "options", ->
 
     it "should have default options", ->
-      options = $menu.data('sf-options')
+      options = $menu.data('sfOptions')
       expect(options.speed).toMatch 'normal'
 
     it "should allow default options to be overridden", ->
       $menu.superfish('destroy')
       $menu.superfish
         speed: 1000
-      options = $menu.data('sf-options')
+      options = $menu.data('sfOptions')
       expect(options.speed).toEqual 1000
 
 
@@ -111,11 +111,11 @@ describe "Superfish", ->
       $.fn.superfish.defaults.onInit = $.noop
 
     it "should be able to store the path to the 'current' menu item (pathClass)", ->
-      expect($menu.data('sf-options').$path.length).toEqual 0
+      expect($menu.data('sfOptions').$path.length).toEqual 0
       $menu.superfish('destroy')
       $menu.superfish
         pathClass: 'current'
-      expect($menu.data('sf-options').$path.length).toEqual 1
+      expect($menu.data('sfOptions').$path.length).toEqual 1
 
 
   describe "pathClass feature", ->

@@ -64,7 +64,7 @@
 				return $el.closest('.' + c.menuClass);
 			},
 			getOptions = function ($el) {
-				return getMenu($el).data('sf-options');
+				return getMenu($el).data('sfOptions');
 			},
 			over = function () {
 				var $this = $(this),
@@ -188,7 +188,7 @@
 			destroy: function () {
 				return this.each(function () {
 					var $this = $(this),
-						o = $this.data('sf-options'),
+						o = $this.data('sfOptions'),
 						$hasPopUp;
 					if (!o) {
 						return false;
@@ -208,20 +208,20 @@
 					o.$path.removeClass(o.hoverClass + ' ' + c.bcClass).addClass(o.pathClass);
 					$this.find('.' + o.hoverClass).removeClass(o.hoverClass);
 					o.onDestroy.call($this);
-					$this.removeData('sf-options');
+					$this.removeData('sfOptions');
 				});
 			},
 			init: function (op) {
 				return this.each(function () {
 					var $this = $(this);
-					if ($this.data('sf-options')) {
+					if ($this.data('sfOptions')) {
 						return false;
 					}
 					var o = $.extend({}, $.fn.superfish.defaults, op),
 						$hasPopUp = $this.find(o.popUpSelector).parent('li');
 					o.$path = setPathToCurrent($this, o);
 
-					$this.data('sf-options', o);
+					$this.data('sfOptions', o);
 
 					toggleMenuClasses($this, o);
 					toggleAnchorClass($hasPopUp);
