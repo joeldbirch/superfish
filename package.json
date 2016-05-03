@@ -2,7 +2,7 @@
   "name": "superfish",
   "title": "jQuery Superfish Menu Plugin",
   "description": "Superfish is a jQuery plugin that adds usability enhancements to multi-level drop-down menus. Fully supports touch devices and keyboard interaction.",
-  "version": "1.7.8",
+  "version": "1.7.9",
   "keywords": [
     "menu",
     "dropdown",
