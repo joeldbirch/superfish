@@ -33,12 +33,14 @@
 			unprefixedPointerEvents = (function () {
 				return (!!w.PointerEvent);
 			})(),
-			toggleMenuClasses = function ($menu, o) {
-				var classes = c.menuClass;
+			toggleMenuClasses = function ($menu, o, add) {
+				var classes = c.menuClass,
+					method;
 				if (o.cssArrows) {
 					classes += ' ' + c.menuArrowClass;
 				}
-				$menu.toggleClass(classes);
+				method = (add) ? 'addClass' : 'removeClass';
+				$menu[method](classes);
 			},
 			setPathToCurrent = function ($menu, o) {
 				return $menu.find('li.' + o.pathClass).slice(0, o.pathLevels)
@@ -47,8 +49,9 @@
 							return ($(this).children(o.popUpSelector).hide().show().length);
 						}).removeClass(o.pathClass);
 			},
-			toggleAnchorClass = function ($li) {
-				$li.children('a').toggleClass(c.anchorClass);
+			toggleAnchorClass = function ($li, add) {
+				var method = (add) ? 'addClass' : 'removeClass';
+				$li.children('a')[method](c.anchorClass);
 			},
 			toggleTouchAction = function ($menu) {
 				var msTouchAction = $menu.css('ms-touch-action');
@@ -223,8 +226,8 @@
 
 					$this.data('sfOptions', o);
 
-					toggleMenuClasses($this, o);
-					toggleAnchorClass($hasPopUp);
+					toggleMenuClasses($this, o, true);
+					toggleAnchorClass($hasPopUp, true);
 					toggleTouchAction($this);
 					applyHandlers($this, o);
 

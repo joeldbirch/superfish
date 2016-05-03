@@ -110,6 +110,12 @@ describe "Superfish", ->
       expect(init_count).toEqual 1
       $.fn.superfish.defaults.onInit = $.noop
 
+    it "should not remove sf-arrows class if already present in markup", ->
+      $menu.superfish('destroy')
+      $menu.addClass('sf-arrows')
+      $menu.superfish()
+      expect($('.sf-arrows').length).toEqual 1
+
     it "should be able to store the path to the 'current' menu item (pathClass)", ->
       expect($menu.data('sfOptions').$path.length).toEqual 0
       $menu.superfish('destroy')
