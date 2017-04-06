@@ -16,7 +16,8 @@
 				bcClass: 'sf-breadcrumb',
 				menuClass: 'sf-js-enabled',
 				anchorClass: 'sf-with-ul',
-				menuArrowClass: 'sf-arrows'
+				menuArrowClass: 'sf-arrows',
+				menuArrowClassMobile: 'sf-arrows sf-arrows-mobile',
 			},
 			ios = (function () {
 				var ios = /^(?![\w\W]*Windows Phone)[\w\W]*(iPhone|iPad|iPod)/i.test(navigator.userAgent);
@@ -36,8 +37,15 @@
 			toggleMenuClasses = function ($menu, o, add) {
 				var classes = c.menuClass,
 					method;
-				if (o.cssArrows) {
-					classes += ' ' + c.menuArrowClass;
+				if(isMobile(o)) {
+					if (o.cssArrows) {
+						classes += ' ' + c.menuArrowClassMobile;
+					}
+				}
+				else {
+					if (o.cssArrows) {
+						classes += ' ' + c.menuArrowClass;
+					}
 				}
 				method = (add) ? 'addClass' : 'removeClass';
 				$menu[method](classes);
@@ -94,7 +102,9 @@
 				}
 				else {
 					clearTimeout(o.sfTimer);
-					o.sfTimer = setTimeout($.proxy(close, $this, o), o.delay);
+					if(!isMobile(o)){
+						o.sfTimer = setTimeout($.proxy(close, $this, o), o.delay);
+					}
 				}
 			},
 			touchHandler = function (e) {
@@ -139,11 +149,40 @@
 					.on('focusin.superfish', 'li', over)
 					.on('focusout.superfish', 'li', out)
 					.on(touchevent, 'a', o, touchHandler);
+			},
+			displayMode = function (el, mode) {
+				switch (mode) {
+					case "mobile":
+						$(".sf-navbar").show();
+						el.addClass('sf-menu-mobile sf-arrows-mobile');
+
+						break;
+					default: //desktop mode
+						$(".sf-navbar").hide();
+						el.removeClass('sf-menu-mobile sf-arrows-mobile sf-menu-opened');
+
+						break;
+				}
+			},
+			resizingMenu = function(el, o){
+				(getWidth() < o.breakPoint) ?
+					displayMode(el, "mobile") :
+					displayMode(el, "desktop");
+			},
+			getWidth = function(){
+				return $(window).width();
+			},
+			isMobile = function(o){
+				return (o.enableMobile && (getWidth() < o.breakPoint)) ? true : false;
+			},
+			toggleMenu = function(el){
+				$(el).toggleClass('sf-menu-opened');
 			};
 
 		return {
 			// public methods
 			hide: function (instant) {
+				// debugger;
 				if (this.length) {
 					var $this = this,
 						o = getOptions($this);
@@ -233,6 +272,41 @@
 
 					$hasPopUp.not('.' + c.bcClass).superfish('hide', true);
 
+					//For mobile menu...
+					var navBar = $("<div>").addClass("sf-navbar").html(
+						$("<button>")
+							.addClass("toggleBtn")
+							.html(o.toggleBtnCaption)
+							.click(function(){
+								toggleMenu($this);
+							})
+					).hide();
+
+					switch (o.theme) {
+						case "dark":
+							$this.addClass("sf-menu-dark");
+							navBar.addClass("sf-navbar-dark");
+							break;
+						case "light":
+							$this.addClass("sf-menu-light");
+							navBar.addClass("sf-navbar-light");
+							break;
+					}
+
+					//Inject mobile menu
+					$this.parent().prepend(navBar);
+
+					if(o.enableMobile){
+						if(o.breakPoint > 0){
+							$(window).resize(function(){
+								resizingMenu($this, o);
+							});
+
+							//check the size on load
+							resizingMenu($this, o);
+						}
+					}
+
 					o.onInit.call(this);
 				});
 			}
@@ -270,7 +344,11 @@
 		onHide: $.noop,
 		onIdle: $.noop,
 		onDestroy: $.noop,
-		onHandleTouch: $.noop
+		onHandleTouch: $.noop,
+		breakPoint: 768,
+		theme: "dark",
+		enableMobile: true,
+		toggleBtnCaption: 'Open'
 	};
 
 })(jQuery, window);
