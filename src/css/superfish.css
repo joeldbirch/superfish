@@ -20,6 +20,7 @@ body {
   border: 0px;
   color: #fff;
   border-radius: 5px;
+  cursor: pointer;
 }
 .sf-navbar-dark {
   color: #F2F2F2;
