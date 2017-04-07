@@ -205,7 +205,9 @@
 					$this.off('.superfish').off('.hoverIntent');
 					// clear animation's inline display style
 					$hasPopUp.children(o.popUpSelector).attr('style', function (i, style) {
-						return style.replace(/display[^;]+;?/g, '');
+						if (typeof style !== 'undefined') {
+							return style.replace(/display[^;]+;?/g, '');
+						}
 					});
 					// reset 'current' path classes
 					o.$path.removeClass(o.hoverClass + ' ' + c.bcClass).addClass(o.pathClass);
