@@ -150,24 +150,30 @@
 					.on('focusout.superfish', 'li', out)
 					.on(touchevent, 'a', o, touchHandler);
 			},
-			displayMode = function (el, mode) {
+			displayMode = function (el, mode, o) {
 				switch (mode) {
 					case "mobile":
+						currentMode = "mobile";
 						$(".sf-navbar").show();
 						el.addClass('sf-menu-mobile sf-arrows-mobile');
+						o.cbMobile(el);
 
 						break;
 					default: //desktop mode
+						currentMode = "desktop";
 						$(".sf-navbar").hide();
 						el.removeClass('sf-menu-mobile sf-arrows-mobile sf-menu-opened');
-
+						o.cbDesktop(el);
 						break;
 				}
 			},
 			resizingMenu = function(el, o){
-				(getWidth() < o.breakPoint) ?
-					displayMode(el, "mobile") :
-					displayMode(el, "desktop");
+				if(getWidth() < o.breakPoint) {
+					if(currentMode == "desktop") displayMode(el, "mobile", o);
+				}
+				else {
+					if(currentMode == "mobile") displayMode(el, "desktop", o);
+				}
 			},
 			getWidth = function(){
 				return $(window).width();
@@ -177,7 +183,8 @@
 			},
 			toggleMenu = function(el){
 				$(el).toggleClass('sf-menu-opened');
-			};
+			},
+			currentMode = "desktop";
 
 		return {
 			// public methods
@@ -348,7 +355,9 @@
 		breakPoint: 768,
 		theme: "dark",
 		enableMobile: true,
-		toggleBtnCaption: 'Open'
+		toggleBtnCaption: 'Open',
+		cbMobile: function(){},
+		cbDesktop: function(){}
 	};
 
 })(jQuery, window);
