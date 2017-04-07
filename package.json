@@ -1,6 +1,6 @@
 {
   "name": "superfish",
-  "title": "jQuery Superfish Menu Plugin",
+  "title": "jQuery Superfish Menu Plugin with responsive features",
   "description": "Superfish is a jQuery plugin that adds usability enhancements to multi-level drop-down menus. Fully supports touch devices and keyboard interaction.",
   "version": "1.7.9",
   "keywords": [
@@ -23,7 +23,12 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "main": "./dist/js/superfish.js",
+  "scripts": {
+    "buildcssmin": "lessc --clean-css src/css/superfish.less > dist/css/superfish.min.css",
+    "buildcss": "lessc src/css/superfish.less > src/css/superfish.css",
+    "buildjs": "uglifyjs src/js/superfish.js -o dist/js/superfish.min.js"
+  },
+  "main": "./dist/js/superfish.min.js",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^1.0.0",
@@ -33,7 +38,10 @@
     "grunt-contrib-jasmine": "^1.0.0",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-uglify": "^0.11.1",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "less": "^2.7.2",
+    "less-plugin-clean-css": "^1.5.1",
+    "uglify-js": "^2.8.21"
   },
   "dependencies": {
     "jquery": ">=1.8"

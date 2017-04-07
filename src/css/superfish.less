@@ -1,4 +1,71 @@
+@midnight-blue: #2c3e50;
+@asbestos: #7f8c8d;
+
 /*** ESSENTIAL STYLES ***/
+body {
+	width: 100%;
+	margin: 0 !important;
+}
+
+.sf-navbar {
+	position: absolute;;
+	height: 50px;
+	left: 0;
+	right: 0;
+	padding-left: 15px;
+	padding-right: 15px;
+	z-index: 100;
+
+	.toggleBtn {
+		float: right;
+		margin-top: 5px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 0px;
+    color: #fff;
+    border-radius: 5px;
+		cursor: pointer;
+		min-width: 40px;
+	}
+}
+
+.sf-navbar-dark {
+	color: #F2F2F2;
+	background: #333;
+}
+
+.sf-navbar-light {
+	background: #F2F2F2;
+	color: #333;
+}
+
+.sf-menu-opened {
+	top: 50px !important;
+	position: absolute;
+}
+
+.sf-menu-mobile {
+	top: -100%;
+	position: absolute;
+	z-index: 90;
+	width: 100%;
+	transition: all linear 0.5s;
+	-webkit-transition: all linear 0.5s;
+
+	& > li {
+		width: 100%;
+	}
+
+	ul {
+		position: relative !important;
+
+		ul {
+			left: 0 !important;
+		}
+	}
+
+}
+
 .sf-menu, .sf-menu * {
 	margin: 0;
 	padding: 0;
@@ -26,11 +93,11 @@
 	display: block;
 	position: relative;
 }
+
 .sf-menu ul ul {
 	top: 0;
 	left: 100%;
 }
-
 
 /*** DEMO SKIN ***/
 .sf-menu {
@@ -42,36 +109,73 @@
 	min-width: 12em; /* allow long menu items to determine submenu width */
 	*width: 12em; /* no auto sub width for IE7, see white-space comment below */
 }
+.sf-menu-dark a {
+	border-top: 1px solid darken(@asbestos, 10%); /* fallback colour must use full shorthand */
+}
+
+.sf-menu-light a {
+	border-top: 1px solid lighten(@asbestos, 10%); /* fallback colour must use full shorthand */
+}
+
 .sf-menu a {
 	border-left: 1px solid #fff;
-	border-top: 1px solid #dFeEFF; /* fallback colour must use full shorthand */
 	border-top: 1px solid rgba(255,255,255,.5);
 	padding: .75em 1em;
 	text-decoration: none;
 	zoom: 1; /* IE7 */
 }
-.sf-menu a {
-	color: #13a;
+
+.sf-menu-light a {
+	color: #333;
 }
+
+.sf-menu-dark a {
+	color: #FFF;
+}
+
 .sf-menu li {
-	background: #BDD2FF;
 	white-space: nowrap; /* no need for Supersubs plugin */
 	*white-space: normal; /* ...unless you support IE7 (let it wrap) */
 	-webkit-transition: background .2s;
 	transition: background .2s;
 }
-.sf-menu ul li {
-	background: #AABDE6;
+.sf-menu-dark li {
+	background: @midnight-blue;
 }
-.sf-menu ul ul li {
-	background: #9AAEDB;
+
+.sf-menu-light li {
+	background: @asbestos;
 }
+
+.sf-menu-dark ul li {
+	background: lighten(@midnight-blue, 10%);
+}
+.sf-menu-light ul li {
+	background: lighten(@asbestos, 10%);
+}
+
+.sf-menu-dark ul ul li {
+	background: lighten(@midnight-blue, 20%);
+}
+.sf-menu-light ul ul li {
+	background: lighten(@asbestos, 20%);
+}
+
 .sf-menu li:hover,
 .sf-menu li.sfHover {
-	background: #CFDEFF;
 	/* only transition out, not in */
 	-webkit-transition: none;
 	transition: none;
+}
+
+.sf-menu-dark li:hover,
+.sf-menu-dark li.sfHover {
+	background: @midnight-blue;
+}
+
+.sf-menu-dark li:hover,
+.sf-menu-dark li.sfHover {
+	background: @asbestos;
 }
 
 /*** arrows (for all except IE7) **/
@@ -106,8 +210,22 @@
 	border-left-color: #dFeEFF; /* edit this to suit design (no rgba in IE8) */
 	border-left-color: rgba(255,255,255,.5);
 }
+
+.sf-arrows-mobile ul .sf-with-ul:after {
+	border-left-color: transparent !important;
+	border-top-color: #dFeEFF !important; /* edit this to suit design (no rgba in IE8) */
+	border-top-color: rgba(255,255,255,.5) !important;
+}
+
 .sf-arrows ul li > .sf-with-ul:focus:after,
 .sf-arrows ul li:hover > .sf-with-ul:after,
 .sf-arrows ul .sfHover > .sf-with-ul:after {
 	border-left-color: white;
+}
+
+.sf-arrows-mobile ul li > .sf-with-ul:focus:after,
+.sf-arrows-mobile ul li:hover > .sf-with-ul:after,
+.sf-arrows-mobile ul .sfHover > .sf-with-ul:after {
+	border-left-color: transparent !important;
+	border-top-color: white !important;
 }

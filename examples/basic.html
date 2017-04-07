@@ -2,12 +2,13 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 		<title>jQuery Superfish dropdown menu example with full touch support for Android, iOS and Windows 8.</title>
-		<link rel="stylesheet" href="../dist/css/superfish.css" media="screen">
+		<link rel="stylesheet" href="../dist/css/superfish.min.css" media="screen">
 		<style> body { max-width: 40em; } </style>
 		<script src="../dist/js/jquery.js"></script>
 		<script src="../dist/js/hoverIntent.js"></script>
-		<script src="../dist/js/superfish.js"></script>
+		<script src="../dist/js/superfish.min.js"></script>
 		<script>
 
 		(function($){ //create closure so we can safely use $ as alias for jQuery
@@ -16,7 +17,8 @@
 
 				// initialise plugin
 				var example = $('#example').superfish({
-					//add options here if required
+					theme: "dark",
+					toggleBtnCaption: 'Menu'
 				});
 
 				// buttons to demonstrate Superfish's public methods
@@ -43,107 +45,110 @@
 		</script>
 	</head>
 	<body>
-		<ul class="sf-menu" id="example">
-			<li class="current">
-				<a href="followed.html">menu item 1</a>
-				<ul>
-					<li>
-						<a href="followed.html">menu item</a>
-					</li>
-					<li class="current">
-						<a href="followed.html">long menu item sets sub width</a>
-						<ul>
-							<li class="current"><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="followed.html">menu item</a>
-						<ul>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="followed.html">menu item</a>
-						<ul>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="followed.html">menu item 2</a>
-			</li>
-			<li>
-				<a href="followed.html">menu item 3</a>
-				<ul>
-					<li>
-						<a href="followed.html">menu item</a>
-						<ul>
-							<li><a href="followed.html">short</a></li>
-							<li><a href="followed.html">short</a></li>
-							<li><a href="followed.html">short</a></li>
-							<li><a href="followed.html">short</a></li>
-							<li><a href="followed.html">short</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="followed.html">menu item</a>
-						<ul>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="followed.html">menu item</a>
-						<ul>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="followed.html">menu item</a>
-						<ul>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="followed.html">menu item</a>
-						<ul>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-							<li><a href="followed.html">menu item</a></li>
-						</ul>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="followed.html">menu item 4</a>
-			</li>	
-		</ul>
+		<div class="row" style="min-height:40px;">
+			<ul class="sf-menu" id="example">
+				<li class="current">
+					<a href="followed.html">menu item 1</a>
+					<ul>
+						<li>
+							<a href="followed.html">menu item</a>
+						</li>
+						<li class="current">
+							<a href="followed.html">long menu item sets sub width</a>
+							<ul>
+								<li class="current"><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item 1</a></li>
+								<li><a href="followed.html">menu item 2</a></li>
+								<li><a href="followed.html">menu item 3</a></li>
+								<li><a href="followed.html">menu item 4</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="followed.html">menu item</a>
+							<ul>
+								<li><a href="followed.html">menu item 5</a></li>
+								<li><a href="followed.html">menu item 6</a></li>
+								<li><a href="followed.html">menu item 7</a></li>
+								<li><a href="followed.html">menu item 8</a></li>
+								<li><a href="followed.html">menu item 9</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="followed.html">menu item</a>
+							<ul>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="followed.html">menu item 2</a>
+				</li>
+				<li>
+					<a href="followed.html">menu item 3</a>
+					<ul>
+						<li>
+							<a href="followed.html">menu item</a>
+							<ul>
+								<li><a href="followed.html">short</a></li>
+								<li><a href="followed.html">short</a></li>
+								<li><a href="followed.html">short</a></li>
+								<li><a href="followed.html">short</a></li>
+								<li><a href="followed.html">short</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="followed.html">menu item</a>
+							<ul>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="followed.html">menu item</a>
+							<ul>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="followed.html">menu item</a>
+							<ul>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="followed.html">menu item</a>
+							<ul>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+								<li><a href="followed.html">menu item</a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="followed.html">menu item 4</a>
+				</li>
+			</ul>
+		</div>
+
 		<p style="clear:both;">Morbi pulvinar ornare mauris. Vivamus ut ipsum. Fusce vitae pede. Etiam sodales, libero vitae ultricies vestibulum, elit eros aliquam pede, auctor lobortis enim ligula non nibh. Quisque molestie, nibh ac malesuada ultricies, metus urna adipiscing dui, tincidunt fermentum lectus velit ac ipsum. Curabitur ultrices ipsum et tortor. Nullam non felis ornare sem laoreet viverra.</p>
 		<p>Nunc turpis ligula, auctor ut, iaculis porta, consequat vel, turpis. Suspendisse sed diam. In scelerisque condimentum tellus. Vivamus et velit a ante consectetuer tempor. Nunc vitae mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Suspendisse lacinia, lacus a posuere molestie, tellus diam ullamcorper est, in mattis elit nisi nec odio. Aliquam a sem sit amet dolor viverra ornare. Curabitur elit velit, tempus vel, tempus at, ultricies non, arcu. Duis viverra tempus tellus. Duis dignissim convallis tortor. Phasellus nisl.</p>
 		<button class="open">Open first submenu</button>
