@@ -18,8 +18,8 @@
     "url": "https://github.com/joeldbirch/superfish.git"
   },
   "bugs": "https://github.com/joeldbirch/superfish/issues",
-  "homepage": "http://users.tpg.com.au/j_birch/plugins/superfish/",
-  "docs": "http://users.tpg.com.au/j_birch/plugins/superfish/",
+  "homepage": "https://superfish.joelbirch.co",
+  "docs": "https://superfish.joelbirch.co",
   "engines": {
     "node": ">= 0.10.0"
   },
