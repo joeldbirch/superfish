@@ -1,6 +1,6 @@
 {
   "name": "superfish",
-  "version": "1.7.9",
+  "version": "1.7.10",
   "main": [
   	"dist/js/superfish.js",
   	"dist/js/hoverIntent.js",
