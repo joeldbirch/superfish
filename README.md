@@ -4,10 +4,10 @@ Our favourite aquatic superhero returns from his sojourn across the galaxy infus
 
 ## Documentation and Demos
 
-Please use the [existing Superfish documentation](https://superfish.joelbirch.co/) where you will find full explanations of the customisable features and plenty of examples to get you started.
+Please use the [existing Superfish documentation](https://superfish.joelbirch.design/) where you will find full explanations of the customisable features and plenty of examples to get you started.
 
 ## Download [Superfish zip archive](https://github.com/joeldbirch/superfish/archive/master.zip)
 
 ## Need help?
 
-Superfish menus have been in use since the dawn of time (well, around 8 years or so) and many are the places where you can find help with your Superfish implementations. [Check out the support options](https://superfish.joelbirch.co/download/#support).
+Superfish menus have been in use since the dawn of time (well, around 8 years or so) and many are the places where you can find help with your Superfish implementations. [Check out the support options](https://superfish.joelbirch.design/download/#support).
